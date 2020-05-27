@@ -1,20 +1,16 @@
 import React from "react";
 import Card from "./Card";
 
-const CardArray = ({ amiibos }) => {
+const cardArray = ({ pokemons }) => {
   return (
     <div>
-      {amiibos.map(amiibos => {
+      {pokemons.map((pokemons, index) => {
         return (
-          <Card
-            name={amiibos.name}
-            gameSeries={amiibos.gameSeries}
-            amiiboSeries={amiibos.amiiboSeries}
-          />
+          <Card name={pokemons.name} key={pokemons.name} index={index + 1} />
         );
       })}
     </div>
   );
 };
 
-export default CardArray;
+export default cardArray;

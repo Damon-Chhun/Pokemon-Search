@@ -1,12 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Card extends Component {
-  render() {
-    return (
-      <div>
-        <img alt="pokemon" />
-        <h2> Hello </h2>
-      </div>
-    );
-  }
-}
+const Card = ({ name, index }) => {
+  return (
+    <div>
+      <img
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`}
+        alt="pokemon"
+      />
+      <h2> {name} </h2>
+    </div>
+  );
+};
+
+export default Card;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import logo from "./logo.png";
-import Card from "./Card";
+import CardArray from "./CardArray";
 
 class App extends Component {
   state = {
@@ -28,7 +28,9 @@ class App extends Component {
         <header className=" App-Header">
           <img src={logo} className="App-Logo" alt="pokemon-logo" />
         </header>
-        <Card pokemons={this.state.pokemons} />
+        <div className="cardList">
+          <CardArray pokemons={this.state.pokemons} />
+        </div>
       </div>
     );
   }
