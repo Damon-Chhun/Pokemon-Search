@@ -1,14 +1,13 @@
 import React from "react";
 
-const Card = ({ name, gameSeries, amiiboSeries }) => {
+const Card = ({ name, index }) => {
   return (
-    <div className="cards">
-      <img alt="picture" src={this.prop.amiibo.image} />
-      <div>
-        <h2>{name}</h2>
-        <p> {gameSeries}</p>
-        <p>{amiiboSeries}</p>
-      </div>
+    <div>
+      <img
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`}
+        alt="pokemon"
+      />
+      <h2> {name} </h2>
     </div>
   );
 };
