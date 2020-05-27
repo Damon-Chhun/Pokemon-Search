@@ -1,16 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 
-const Card = ({ name, gameSeries, amiiboSeries }) => {
-  return (
-    <div className="cards">
-      <img alt="picture" src={this.prop.amiibo.image} />
+export default class Card extends Component {
+  render() {
+    return (
       <div>
-        <h2>{name}</h2>
-        <p> {gameSeries}</p>
-        <p>{amiiboSeries}</p>
+        <img alt="pokemon" />
+        <h2> Hello </h2>
       </div>
-    </div>
-  );
-};
-
-export default Card;
+    );
+  }
+}
