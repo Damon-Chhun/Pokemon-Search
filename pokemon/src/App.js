@@ -8,37 +8,33 @@ class App extends Component {
   state = {
     pokemons: [],
     offset: 0,
+    offsetChanged: false,
     limit: 20
   };
 
   nextPage = () => {
     let offset =
       this.state.offset <= 131 ? this.state.offset + 20 : this.state.offset;
-    console.log("offset @ next", offset);
+    this.setState({
+      ...this.state,
+      offset,
+      offsetChanged: !this.state.offsetChanged
+    });
+    console.log("offset", this.state.offset);
+  };
+
+  prevPage = () => {
+    let offset =
+      this.state.offset !== 0 ? this.state.offset - 20 : this.state.offset;
     this.setState({
       offset
     });
   };
 
-  prevPage = () => {
-    let offset =
-      this.state.offset >= 20 ? this.state.offset - 20 : this.state.offset;
-    this.setState(
-      {
-        offset
-      },
-      this.checkOffSet
-    );
-  };
-
-  checkOffSet = () => {
-    if (this.offset === this.state.offset) {
-    }
-  };
-
   updateAPI = pokemons => {
     this.setState({
-      pokemons
+      pokemons,
+      offsetChanged: !this.state.offsetChanged
     });
   };
 
@@ -49,11 +45,11 @@ class App extends Component {
           <img src={logo} className="App-Logo" alt="pokemon-logo" />
         </header>
         <Pagination
-          pokemons={this.state.pokemons}
           updateAPI={this.updateAPI}
           nextPage={this.nextPage}
           prevPage={this.prevPage}
           offset={this.state.offset}
+          offsetChanged={this.state.offsetChanged}
         />
         <div className="cardList">
           <CardArray
