@@ -1,35 +1,66 @@
 import React, { Component } from "react";
 import "./App.css";
 import logo from "./logo.png";
+import Pagination from "./pagination";
 import CardArray from "./CardArray";
 
 class App extends Component {
   state = {
     pokemons: [],
-    pokemonInfo: []
+    offset: 0,
+    limit: 20
   };
 
-  async componentDidMount() {
-    try {
-      const results = await fetch("https://pokeapi.co/api/v2/pokemon/");
-      const pokemon = await results.json();
-      this.setState({
-        pokemons: pokemon.results
-      });
-    } catch (e) {
-      console.log(e);
+  nextPage = () => {
+    let offset =
+      this.state.offset <= 131 ? this.state.offset + 20 : this.state.offset;
+    console.log("offset @ next", offset);
+    this.setState({
+      offset
+    });
+  };
+
+  prevPage = () => {
+    let offset =
+      this.state.offset >= 20 ? this.state.offset - 20 : this.state.offset;
+    this.setState(
+      {
+        offset
+      },
+      this.checkOffSet
+    );
+  };
+
+  checkOffSet = () => {
+    if (this.offset === this.state.offset) {
     }
-  }
+  };
+
+  updateAPI = pokemons => {
+    this.setState({
+      pokemons
+    });
+  };
 
   render() {
-    console.log(this.state.pokemons[1]);
     return (
       <div className="App">
         <header className=" App-Header">
           <img src={logo} className="App-Logo" alt="pokemon-logo" />
         </header>
+        <Pagination
+          pokemons={this.state.pokemons}
+          updateAPI={this.updateAPI}
+          nextPage={this.nextPage}
+          prevPage={this.prevPage}
+          offset={this.state.offset}
+        />
         <div className="cardList">
-          <CardArray pokemons={this.state.pokemons} />
+          <CardArray
+            pokemons={this.state.pokemons}
+            updateAPI={this.updateAPI}
+            offset={this.state.offset}
+          />
         </div>
       </div>
     );
