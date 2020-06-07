@@ -33,6 +33,7 @@ class Pagination extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.offset !== this.props.offset) {
+      console.log("TEST", this.props.offset);
       this.newRequest(this.props.offset);
     }
   }

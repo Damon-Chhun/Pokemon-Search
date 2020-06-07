@@ -13,6 +13,7 @@ class CardArray extends Component {
       const { results = [] } = await response.json();
 
       this.props.updateAPI(results);
+      //debugger;
     } catch (e) {
       console.log(e);
     }
@@ -24,11 +25,14 @@ class CardArray extends Component {
       <PokemonGrid>
         {pokemons.map((pokemons, index) => {
           return (
-            <Card
-              name={pokemons.name}
-              key={pokemons.name}
-              index={index + 1 + this.props.offset}
-            />
+            <div className="testing">
+              <Card
+                name={pokemons.name}
+                key={index}
+                index={index + 1 + this.props.offset}
+                weight={this.props.weight[index]}
+              />
+            </div>
           );
         })}
       </PokemonGrid>
