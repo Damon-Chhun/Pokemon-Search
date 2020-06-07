@@ -3,18 +3,20 @@ import "./App.css";
 import logo from "./logo.png";
 import Pagination from "./pagination";
 import CardArray from "./CardArray";
+import PokemonInfo from "./PokemonInfo";
 
 class App extends Component {
   state = {
     pokemons: [],
     offset: 0,
     offsetChanged: false,
-    limit: 20
+    type: [],
+    weight: []
   };
 
   nextPage = () => {
     let offset =
-      this.state.offset <= 131 ? this.state.offset + 20 : this.state.offset;
+      this.state.offset <= 346 ? this.state.offset + 20 : this.state.offset;
     this.setState({
       ...this.state,
       offset,
@@ -32,9 +34,17 @@ class App extends Component {
   };
 
   updateAPI = pokemons => {
+    console.log(pokemons, "updateAPI");
     this.setState({
       pokemons,
       offsetChanged: !this.state.offsetChanged
+    });
+  };
+
+  updateInfo = weight => {
+    console.log(this.state.weight);
+    this.setState({
+      weight: [...this.state.weight, weight]
     });
   };
 
@@ -56,6 +66,13 @@ class App extends Component {
             pokemons={this.state.pokemons}
             updateAPI={this.updateAPI}
             offset={this.state.offset}
+            number={this.state.number}
+            weight={this.state.weight}
+            types={this.state.types}
+          />
+          <PokemonInfo
+            updateInfo={this.updateInfo}
+            pokemons={this.state.pokemons}
           />
         </div>
       </div>

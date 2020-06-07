@@ -11,3 +11,33 @@
 .cardList {
   background-color: #b2e5ff;
 }
+
+.pagination-prev {
+  padding: 8px 16px;
+  background-color: #e73a51;
+  border-radius: 12px;
+}
+
+.pagination-next {
+  padding: 8px 16px;
+  background-color: #e73a51;
+  border-radius: 12px;
+}
+
+.pagination-next:hover {
+  background-color: #b2e5ff;
+  color: #e73a51;
+}
+
+.pagination-prev:hover {
+  background-color: #b2e5ff;
+  color: #e73a51;
+}
+
+.pagination-next {
+  transition-duration: 0.4s;
+}
+
+.pagination-prev {
+  transition-duration: 0.4s;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import propTypes from "prop-types";
+import "./App.css";
 const API_URL = "https://pokeapi.co/api/v2/pokemon/?offset=";
 const LIMIT_URL = "&limit=20";
 
@@ -32,6 +33,7 @@ class Pagination extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.offset !== this.props.offset) {
+      console.log("TEST", this.props.offset);
       this.newRequest(this.props.offset);
     }
   }
@@ -40,10 +42,10 @@ class Pagination extends Component {
     return (
       <Buttons>
         <p onClick={this.requestForPrevPage} className="pagination-prev">
-          Previous
+          &laquo; Previous
         </p>
         <p onClick={this.requestForNextPage} className="pagination-next">
-          Next
+          Next &raquo;
         </p>
       </Buttons>
     );
@@ -56,5 +58,9 @@ Pagination.propTypes = {
 };
 
 const Buttons = styled.div`
-  border: solid purple;
+  background-color: #e73a51;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
 `;
