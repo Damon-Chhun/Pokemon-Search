@@ -27,7 +27,7 @@ class Card extends Component {
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.props.index}.png`}
             alt="pokemon"
           />
-          <h3>Type: {this.props.types} </h3>
+
           <h3>Weight: {this.props.weight} </h3>
         </CardInfo>
       </div>

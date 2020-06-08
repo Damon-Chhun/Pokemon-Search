@@ -41,10 +41,17 @@ class App extends Component {
     });
   };
 
-  updateInfo = weight => {
+  updateWeight = weight => {
     console.log(this.state.weight);
     this.setState({
       weight: [...this.state.weight, weight]
+    });
+  };
+
+  updateTypes = types => {
+    console.log(this.state.type, "TYPES");
+    this.setState({
+      type: [...this.state.type, [types]]
     });
   };
 
@@ -68,11 +75,12 @@ class App extends Component {
             offset={this.state.offset}
             number={this.state.number}
             weight={this.state.weight}
-            types={this.state.types}
+            types={this.state.type}
           />
           <PokemonInfo
-            updateInfo={this.updateInfo}
+            updateWeight={this.updateWeight}
             pokemons={this.state.pokemons}
+            updateTypes={this.updateTypes}
           />
         </div>
       </div>

@@ -30,7 +30,8 @@ class CardArray extends Component {
                 name={pokemons.name}
                 key={index}
                 index={index + 1 + this.props.offset}
-                weight={this.props.weight[index]}
+                weight={this.props.weight[index + this.props.offset]}
+                //types={this.props.types[index + this.props.offset]}
               />
             </div>
           );
