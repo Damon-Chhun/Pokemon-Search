@@ -4,6 +4,7 @@ import logo from "./logo.png";
 import Pagination from "./pagination";
 import CardArray from "./CardArray";
 import PokemonInfo from "./PokemonInfo";
+import SearchBox from "./SearchBox.js";
 
 class App extends Component {
   state = {
@@ -48,12 +49,12 @@ class App extends Component {
     });
   };
 
-  updateTypes = types => {
+  /* updateTypes = types => {
     console.log(this.state.type, "TYPES");
     this.setState({
       type: [...this.state.type, [types]]
     });
-  };
+  }; */
 
   render() {
     return (
@@ -61,6 +62,8 @@ class App extends Component {
         <header className=" App-Header">
           <img src={logo} className="App-Logo" alt="pokemon-logo" />
         </header>
+
+        <SearchBox />
         <Pagination
           updateAPI={this.updateAPI}
           nextPage={this.nextPage}
@@ -68,6 +71,7 @@ class App extends Component {
           offset={this.state.offset}
           offsetChanged={this.state.offsetChanged}
         />
+
         <div className="cardList">
           <CardArray
             pokemons={this.state.pokemons}
@@ -80,7 +84,7 @@ class App extends Component {
           <PokemonInfo
             updateWeight={this.updateWeight}
             pokemons={this.state.pokemons}
-            updateTypes={this.updateTypes}
+            // updateTypes={this.updateTypes}
           />
         </div>
       </div>

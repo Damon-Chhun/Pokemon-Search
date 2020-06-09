@@ -41,3 +41,11 @@
 .pagination-prev {
   transition-duration: 0.4s;
 }
+.search {
+  background-color: #b2e5ff;
+  border-radius: 16px;
+  min-height: 5vmin;
+  min-width: 15%;
+  text-align: center;
+  outline: none;
+}
