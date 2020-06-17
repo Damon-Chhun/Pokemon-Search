@@ -12,7 +12,8 @@ class App extends Component {
     offset: 0,
     offsetChanged: false,
     type: [],
-    weight: []
+    weight: [],
+    searchfield: ""
   };
 
   nextPage = () => {
@@ -49,12 +50,11 @@ class App extends Component {
     });
   };
 
-  /* updateTypes = types => {
-    console.log(this.state.type, "TYPES");
+  searchChange = event => {
     this.setState({
-      type: [...this.state.type, [types]]
+      searchfield: event.target.value
     });
-  }; */
+  };
 
   render() {
     return (
@@ -63,7 +63,7 @@ class App extends Component {
           <img src={logo} className="App-Logo" alt="pokemon-logo" />
         </header>
 
-        <SearchBox />
+        <SearchBox searchChange={this.searchChange} />
         <Pagination
           updateAPI={this.updateAPI}
           nextPage={this.nextPage}
@@ -75,6 +75,7 @@ class App extends Component {
         <div className="cardList">
           <CardArray
             pokemons={this.state.pokemons}
+            searchfield={this.state.searchfield}
             updateAPI={this.updateAPI}
             offset={this.state.offset}
             number={this.state.number}

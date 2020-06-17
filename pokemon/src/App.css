@@ -49,3 +49,11 @@
   text-align: center;
   outline: none;
 }
+
+/* .Card-effect:hover {
+  background-color: #dde5ff;
+  transform: scale(1.5);
+}
+.Card-effect {
+  transition: transform 0.4s;
+} */
