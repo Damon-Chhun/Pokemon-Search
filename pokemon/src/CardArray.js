@@ -13,29 +13,48 @@ class CardArray extends Component {
       const { results = [] } = await response.json();
 
       this.props.updateAPI(results);
-      //debugger;
     } catch (e) {
       console.log(e);
     }
   }
-  render() {
-    const { pokemons = [] } = this.props;
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.searchfield !== this.props.searchfield) {
+      console.log(
+        "SEARCHFIELD DID UPDATE IN CARDARRAY",
+        this.props.searchfield
+      );
+      this.updateFilteredPokemon(this.props.searchfield);
+    }
+  }
+
+  updateFilteredPokemon = searchfield => {
+    const filteredPokemons = this.props.pokemons.filter(pokemons => {
+      return pokemons.name.toLowerCase().includes(searchfield.toLowerCase());
+    });
+    console.log("filtered Pokemon is Set", filteredPokemons);
+    let pokemons = searchfield !== "" ? filteredPokemons : this.props.pokemons;
+    console.log(pokemons, "POKEMON DATA");
+    return pokemons;
+  };
+
+  render() {
     return (
       <PokemonGrid>
-        {pokemons.map((pokemons, index) => {
-          return (
-            <div className="testing">
-              <Card
-                name={pokemons.name}
-                key={index}
-                index={index + 1 + this.props.offset}
-                weight={this.props.weight[index + this.props.offset]}
-                //types={this.props.types[index + this.props.offset]}
-              />
-            </div>
-          );
-        })}
+        {this.updateFilteredPokemon(this.props.searchfield).map(
+          (pokemons, index) => {
+            return (
+              <div className="testing">
+                <Card
+                  name={pokemons.name}
+                  key={index}
+                  index={index + 1 + this.props.offset}
+                  weight={this.props.weight[index + this.props.offset]}
+                />
+              </div>
+            );
+          }
+        )}
       </PokemonGrid>
     );
   }
