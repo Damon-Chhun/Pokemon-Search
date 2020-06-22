@@ -11,7 +11,6 @@ class App extends Component {
     pokemons: [],
     offset: 0,
     offsetChanged: false,
-    type: [],
     weight: [],
     searchfield: ""
   };
@@ -43,8 +42,8 @@ class App extends Component {
     });
   };
 
-  updateWeight = weight => {
-    console.log(this.state.weight);
+  updateInfo = weight => {
+    console.log(this.state.info);
     this.setState({
       weight: [...this.state.weight, weight]
     });
@@ -78,12 +77,10 @@ class App extends Component {
             searchfield={this.state.searchfield}
             updateAPI={this.updateAPI}
             offset={this.state.offset}
-            number={this.state.number}
             weight={this.state.weight}
-            types={this.state.type}
           />
           <PokemonInfo
-            updateWeight={this.updateWeight}
+            updateInfo={this.updateInfo}
             pokemons={this.state.pokemons}
             // updateTypes={this.updateTypes}
           />

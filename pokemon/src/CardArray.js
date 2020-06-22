@@ -35,6 +35,7 @@ class CardArray extends Component {
     console.log("filtered Pokemon is Set", filteredPokemons);
     let pokemons = searchfield !== "" ? filteredPokemons : this.props.pokemons;
     console.log(pokemons, "POKEMON DATA");
+
     return pokemons;
   };
 
@@ -43,13 +44,16 @@ class CardArray extends Component {
       <PokemonGrid>
         {this.updateFilteredPokemon(this.props.searchfield).map(
           (pokemons, index) => {
+            const initialIndex = pokemons.url.replace("v2", "");
+            const newIndex = initialIndex.replace(/[^0-9]/g, "");
             return (
               <div className="testing">
                 <Card
                   name={pokemons.name}
+                  index={newIndex}
+                  number={newIndex}
+                  weight={this.props.weight[newIndex - 1]}
                   key={index}
-                  index={index + 1 + this.props.offset}
-                  weight={this.props.weight[index + this.props.offset]}
                 />
               </div>
             );

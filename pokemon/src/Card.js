@@ -2,39 +2,23 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import "./App.css";
 
-class Card extends Component {
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.weight !== this.props.weight &&
-      prevProps.types !== this.props.types
-    ) {
-      console.log("checking if card updated");
-      this.CardInfo();
-    }
-  }
-  CardInfo() {
-    console.log("test");
-  }
-
-  render() {
-    return (
-      <div>
-        <CardInfo>
-          <div className=" Card-Header ">
-            <h1> {this.props.name} </h1>
-            <h3> ID: {this.props.index} </h3>
-          </div>
-          <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.props.index}.png`}
-            alt="pokemon"
-          />
-
-          <h3>Weight: {this.props.weight} </h3>
-        </CardInfo>
-      </div>
-    );
-  }
-}
+const Card = ({ name, index, number, weight }) => {
+  return (
+    <div>
+      <CardInfo>
+        <div className=" Card-Header ">
+          <h1> {name} </h1>
+          <h3> Number: {number} </h3>
+        </div>
+        <img
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`}
+          alt="pokemon"
+        />
+        <h3>Weight: {weight} </h3>
+      </CardInfo>
+    </div>
+  );
+};
 
 export default Card;
 
