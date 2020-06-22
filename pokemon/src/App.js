@@ -60,9 +60,10 @@ class App extends Component {
       <div className="App">
         <header className=" App-Header">
           <img src={logo} className="App-Logo" alt="pokemon-logo" />
+          <h2>Made Possible With PokeAPI !</h2>
+          <SearchBox searchChange={this.searchChange} />
         </header>
 
-        <SearchBox searchChange={this.searchChange} />
         <Pagination
           updateAPI={this.updateAPI}
           nextPage={this.nextPage}
