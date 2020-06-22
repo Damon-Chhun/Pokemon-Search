@@ -1,11 +1,22 @@
 .App-Logo {
   height: 30vmin;
+  width: 60vmin;
+}
+
+.search {
+  background-color: #b2e5ff;
+  border-radius: 16px;
+  min-height: 5vmin;
+  min-width: 15%;
+  text-align: center;
+  outline: none;
 }
 
 .App-Header {
   background-color: #e73a51;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .cardList {
@@ -40,14 +51,6 @@
 
 .pagination-prev {
   transition-duration: 0.4s;
-}
-.search {
-  background-color: #b2e5ff;
-  border-radius: 16px;
-  min-height: 5vmin;
-  min-width: 15%;
-  text-align: center;
-  outline: none;
 }
 
 /* .Card-effect:hover {
