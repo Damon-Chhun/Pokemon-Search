@@ -1,16 +1,15 @@
-import { GET_OFFSET } from "./action";
+import { GET_WEIGHT } from "../action";
 
 const initialState = {
-  value: 0
+  weight: []
 };
 
 export default function(state = initialState, action) {
   const { type, data } = action;
   switch (type) {
-    case GET_OFFSET:
+    case GET_WEIGHT:
       return {
-        ...state,
-        value: data
+        weight: [...state.weight, data]
       };
     default:
       return state;

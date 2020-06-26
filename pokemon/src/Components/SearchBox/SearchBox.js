@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import "../Containers/App.css";
+import "../../Containers/App.css";
 
 const SearchBox = ({ searchChange }) => {
   return (

@@ -1,8 +1,12 @@
 import { combineReducers } from "redux";
-import offset from "../Components/Cards/reducer.js";
+import card from "../Components/Cards/cardReducer.js";
+import pagination from "../Components/Pagination/PaginationReducer.js";
+import pokemonInfo from "../Components/PokemonInfo/PokemonInfoReducer.js";
 
 const rootReducer = combineReducers({
-  offset
+  card,
+  pagination,
+  pokemonInfo
 });
 
 export default rootReducer;
