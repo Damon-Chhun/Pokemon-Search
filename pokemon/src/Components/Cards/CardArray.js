@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Card from "./Card";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 class CardArray extends Component {
   async componentDidMount() {
@@ -64,7 +65,11 @@ class CardArray extends Component {
   }
 }
 
-export default CardArray;
+const mapStateToProps = state => ({
+  offset: state.offset
+});
+
+export default connect(mapStateToProps)(CardArray);
 
 const PokemonGrid = styled.div`
   display: grid;

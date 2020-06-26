@@ -1,16 +1,28 @@
 import React, { Component } from "react";
 import "./App.css";
 import logo from "./logo.png";
-import Pagination from "../Components/pagination";
-import CardArray from "../Components/CardArray";
-import PokemonInfo from "../Components/PokemonInfo";
+import Pagination from "../Components/Cards/pagination";
+import CardArray from "../Components/Cards/CardArray";
+import PokemonInfo from "../Components/Cards/PokemonInfo";
 import SearchBox from "../Components/SearchBox";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import rootReducer from "./rootReducer";
+import { composeWithDevTools } from "redux-devtools-extension";
+import logger from "redux-logger";
+import thunk from "redux-thunk";
+
+const middleware = [logger, thunk];
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
 
 class App extends Component {
   state = {
     pokemons: [],
-    offset: 0,
-    offsetChanged: false,
+    // offset: 0,
     weight: [],
     searchfield: ""
   };
@@ -37,8 +49,7 @@ class App extends Component {
   updateAPI = pokemons => {
     console.log(pokemons, "updateAPI");
     this.setState({
-      pokemons,
-      offsetChanged: !this.state.offsetChanged
+      pokemons
     });
   };
 
@@ -57,35 +68,37 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className=" App-Header">
-          <img src={logo} className="App-Logo" alt="pokemon-logo" />
-          <h2>Made Possible With PokeAPI !</h2>
-          <SearchBox searchChange={this.searchChange} />
-        </header>
+      <Provider store={store}>
+        <div className="App">
+          <header className=" App-Header">
+            <img src={logo} className="App-Logo" alt="pokemon-logo" />
+            <h2>Made Possible With PokeAPI !</h2>
+            <SearchBox searchChange={this.searchChange} />
+          </header>
 
-        <Pagination
-          updateAPI={this.updateAPI}
-          nextPage={this.nextPage}
-          prevPage={this.prevPage}
-          offset={this.state.offset}
-          offsetChanged={this.state.offsetChanged}
-        />
-
-        <div className="cardList">
-          <CardArray
-            pokemons={this.state.pokemons}
-            searchfield={this.state.searchfield}
+          <Pagination
             updateAPI={this.updateAPI}
-            offset={this.state.offset}
-            weight={this.state.weight}
+            nextPage={this.nextPage}
+            prevPage={this.prevPage}
+            //offset={this.state.offset}
+            //offsetChanged={this.state.offsetChanged}
           />
-          <PokemonInfo
-            updateInfo={this.updateInfo}
-            pokemons={this.state.pokemons}
-          />
+
+          <div className="cardList">
+            <CardArray
+              pokemons={this.state.pokemons}
+              searchfield={this.state.searchfield}
+              updateAPI={this.updateAPI}
+              // offset={this.state.offset}
+              weight={this.state.weight}
+            />
+            <PokemonInfo
+              updateInfo={this.updateInfo}
+              pokemons={this.state.pokemons}
+            />
+          </div>
         </div>
-      </div>
+      </Provider>
     );
   }
 }
