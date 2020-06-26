@@ -4,11 +4,17 @@ import propTypes from "prop-types";
 import "../../Containers/App.css";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { nextPage, prevPage } from "./action";
-const API_URL = "https://pokeapi.co/api/v2/pokemon/?offset=";
-const LIMIT_URL = "&limit=20";
+import { nextPage, prevPage, fetchPokemons, fetchPokemonInfo } from "../action";
 
 class Pagination extends Component {
+  async newRequest() {
+    await this.props.fetchPokemons(this.props.offset);
+    this.props.pokemons.map(pokemon => {
+      let URL = pokemon.url;
+      return <div> {this.props.fetchPokemonInfo(URL)}</div>;
+    });
+  }
+
   requestForNextPage = () => {
     const offset =
       this.props.offset <= 346 ? this.props.offset + 20 : this.props.offset;
@@ -22,21 +28,6 @@ class Pagination extends Component {
 
     this.props.prevPage(offset);
   };
-
-  async newRequest() {
-    try {
-      console.log(this.props.offset);
-      const response = await fetch(
-        `${API_URL}${this.props.offset}${LIMIT_URL}`
-      );
-      const { results = [] } = await response.json();
-      console.log("data", results);
-
-      this.props.updateAPI(results);
-    } catch (err) {
-      console.log("err", err);
-    }
-  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.offset !== this.props.offset) {
@@ -62,7 +53,8 @@ class Pagination extends Component {
 const mapStateToProps = state => {
   console.log("state", state);
   return {
-    offset: state.offset.value
+    offset: state.pagination.value,
+    pokemons: state.card.pokemons
   };
 };
 
@@ -72,7 +64,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const actionCreators = bindActionCreators(
     {
       nextPage,
-      prevPage
+      prevPage,
+      fetchPokemons,
+      fetchPokemonInfo
     },
     dispatch
   );

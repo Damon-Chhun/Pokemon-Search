@@ -2,21 +2,16 @@ import React, { Component } from "react";
 import Card from "./Card";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchPokemons, fetchPokemonInfo } from "../action";
 
 class CardArray extends Component {
   async componentDidMount() {
-    try {
-      const API_URL = "https://pokeapi.co/api/v2/pokemon/?offset=";
-      const LIMIT_URL = "&limit=20";
-      const response = await fetch(
-        `${API_URL}${this.props.offset}${LIMIT_URL}`
-      );
-      const { results = [] } = await response.json();
-
-      this.props.updateAPI(results);
-    } catch (e) {
-      console.log(e);
-    }
+    await this.props.fetchPokemons(this.props.offset);
+    this.props.pokemons.map(pokemon => {
+      let URL = pokemon.url;
+      return <div> {this.props.fetchPokemonInfo(URL)}</div>;
+    });
   }
 
   componentDidUpdate(prevProps) {
@@ -66,10 +61,21 @@ class CardArray extends Component {
 }
 
 const mapStateToProps = state => ({
-  offset: state.offset
+  offset: state.pagination.value,
+  pokemons: state.card.pokemons,
+  weight: state.pokemonInfo.weight
 });
 
-export default connect(mapStateToProps)(CardArray);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      fetchPokemons,
+      fetchPokemonInfo
+    },
+    dispatch
+  );
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardArray);
 
 const PokemonGrid = styled.div`
   display: grid;
