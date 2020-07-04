@@ -4,13 +4,7 @@ import PropTypes from "prop-types";
 import "../../Containers/App.css";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {
-  nextPage,
-  prevPage,
-  fetchPokemons,
-  fetchPokemonInfo,
-  setPokemonInfo
-} from "../action";
+import { nextPage, prevPage, fetchPokemons, setPokemonInfo } from "../action";
 
 class Pagination extends Component {
   async nextRequest() {
@@ -106,7 +100,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       nextPage,
       prevPage,
       fetchPokemons,
-      fetchPokemonInfo,
       setPokemonInfo
     },
     dispatch
