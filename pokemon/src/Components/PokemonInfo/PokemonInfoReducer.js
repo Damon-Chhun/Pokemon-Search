@@ -1,16 +1,17 @@
-import { GET_WEIGHT } from "../action";
+import { SET_POKEMONINFO } from "../action";
 
 const initialState = {
-  weight: []
+  pokemonInfo: []
 };
 
 export default function(state = initialState, action) {
   const { type, data } = action;
   switch (type) {
-    case GET_WEIGHT:
+    case SET_POKEMONINFO:
       return {
-        weight: [...state.weight, data]
+        pokemonInfo: state.pokemonInfo.concat(data)
       };
+
     default:
       return state;
   }
