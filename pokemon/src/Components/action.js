@@ -1,7 +1,6 @@
 export const GET_OFFSET = "GET_OFFSET";
 export const GET_POKEMONS = "GET_POKEMONS";
 export const SET_POKEMONINFO = "SET_POKEMONINFO";
-export const NEED_SLICE = "NEED_SLICE";
 
 export function nextPage(data) {
   return {
@@ -38,17 +37,3 @@ export const setPokemonInfo = data => dispatch => {
     data: data
   });
 };
-
-export function needSlice(offset) {
-  return {
-    type: "NEED_SLICE",
-    data: offset
-  };
-}
-
-export function fetchPokemonInfo() {
-  return {
-    type: "GET_WEIGHT",
-    data: null
-  };
-}
