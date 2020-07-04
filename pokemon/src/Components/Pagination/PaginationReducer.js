@@ -1,4 +1,4 @@
-import { GET_OFFSET, GET_POKEMONS } from "../action";
+import { GET_OFFSET } from "../action";
 
 const initialState = {
   value: 0
@@ -11,11 +11,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         value: data
-      };
-    case GET_POKEMONS:
-      return {
-        ...state,
-        pokemons: data
       };
 
     default:

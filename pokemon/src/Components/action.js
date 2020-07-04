@@ -1,6 +1,7 @@
 export const GET_OFFSET = "GET_OFFSET";
 export const GET_POKEMONS = "GET_POKEMONS";
-export const GET_WEIGHT = "GET_WEIGHT";
+export const SET_POKEMONINFO = "SET_POKEMONINFO";
+export const NEED_SLICE = "NEED_SLICE";
 
 export function nextPage(data) {
   return {
@@ -16,35 +17,38 @@ export function prevPage(data) {
   };
 }
 
-export function fetchPokemons(offset) {
-  return async function(dispatch) {
-    try {
-      const API_URL = "https://pokeapi.co/api/v2/pokemon/?offset=";
-      const LIMIT_URL = "&limit=20";
-      const response = await fetch(`${API_URL}${offset}${LIMIT_URL}`);
-      const { results = [] } = await response.json();
-      return dispatch({
-        type: "GET_POKEMONS",
-        data: results
-      });
-    } catch (e) {
-      console.log(e);
-    }
+export const fetchPokemons = offset => async dispatch => {
+  try {
+    const API_URL = "https://pokeapi.co/api/v2/pokemon/?offset=";
+    const LIMIT_URL = "&limit=20";
+    const response = await fetch(`${API_URL}${offset}${LIMIT_URL}`);
+    const { results = [] } = await response.json();
+    return dispatch({
+      type: "GET_POKEMONS",
+      data: results
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const setPokemonInfo = data => dispatch => {
+  return dispatch({
+    type: SET_POKEMONINFO,
+    data: data
+  });
+};
+
+export function needSlice(offset) {
+  return {
+    type: "NEED_SLICE",
+    data: offset
   };
 }
 
-export function fetchPokemonInfo(URL) {
-  return async function(dispatch) {
-    try {
-      const results = await fetch(`${URL}`);
-      const pokemonInfo = await results.json();
-      const weight = pokemonInfo.weight;
-      return dispatch({
-        type: GET_WEIGHT,
-        data: weight
-      });
-    } catch (e) {
-      console.log(e);
-    }
+export function fetchPokemonInfo() {
+  return {
+    type: "GET_WEIGHT",
+    data: null
   };
 }

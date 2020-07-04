@@ -21,7 +21,7 @@
 
 .cardList {
   background-color: #b2e5ff;
-  height: max-content;
+  min-height: 100%;
 }
 
 .pagination-prev {
@@ -54,10 +54,10 @@
   transition-duration: 0.4s;
 }
 
-/* .Card-effect:hover {
+.CardInfo-effect:hover {
   background-color: #dde5ff;
   transform: scale(1.5);
 }
-.Card-effect {
+.CardInfo-effect {
   transition: transform 0.4s;
-} */
+}

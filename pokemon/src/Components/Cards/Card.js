@@ -2,11 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import "../../Containers/App.css";
 
+const CardInfo = styled.div`
+  display: grid;
+  justify-items: center;
+  background-color: #dde5ff;
+  border-radius: 12px;
+`;
+
 const Card = ({ name, index, number, weight }) => {
   return (
     <div>
-      <CardInfo>
-        <div className=" Card-Header ">
+      <CardInfo className="CardInfo">
+        <div className="Card-Header">
           <h1> {name} </h1>
         </div>
         <h3> Number: {number} </h3>
@@ -21,10 +28,3 @@ const Card = ({ name, index, number, weight }) => {
 };
 
 export default Card;
-
-const CardInfo = styled.div`
-  display: grid;
-  justify-items: center;
-  background-color: #dde5ff;
-  border-radius: 12px;
-`;
