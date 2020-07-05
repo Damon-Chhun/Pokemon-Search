@@ -9,7 +9,9 @@ const CardInfo = styled.div`
   border-radius: 12px;
 `;
 
-const Card = ({ name, index, number, weight }) => {
+const Card = ({ name, index, number, weight, types }) => {
+  const type = types || [];
+  // console.log(type, "TYPE CHECK");
   return (
     <div>
       <CardInfo className="CardInfo">
@@ -21,6 +23,9 @@ const Card = ({ name, index, number, weight }) => {
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`}
           alt="pokemon"
         />
+        <h3>
+          Type: {type[0]} {type[1]}
+        </h3>
         <h3>Weight: {weight} </h3>
       </CardInfo>
     </div>

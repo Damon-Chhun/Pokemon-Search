@@ -9,6 +9,7 @@ export default function(state = initialState, action) {
   switch (type) {
     case SET_POKEMONINFO:
       return {
+        ...state,
         pokemonInfo: state.pokemonInfo.concat(data)
       };
 

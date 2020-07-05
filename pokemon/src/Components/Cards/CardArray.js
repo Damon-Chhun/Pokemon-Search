@@ -65,7 +65,11 @@ class CardArray extends Component {
             );
             const initialIndex = pokemons.url.replace("v2", "");
             const newIndex = initialIndex.replace(/[^0-9]/g, "");
-            console.log(found, "FOUND");
+            const types = found
+              ? found.types.map(types => {
+                  return types.type.name;
+                })
+              : null;
             return (
               <div key={index} className="testing">
                 <Card
@@ -73,6 +77,7 @@ class CardArray extends Component {
                   index={newIndex}
                   number={newIndex}
                   weight={found ? found.weight : null}
+                  types={types}
                 />
               </div>
             );
