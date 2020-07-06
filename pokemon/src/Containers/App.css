@@ -1,63 +1,60 @@
 .App-Logo {
-  height: 30vmin;
-  width: 60vmin;
+  height: 25vmin;
+  width: 55vmin;
+}
+img {
+  height: 20vh;
+}
+::placeholder {
+  color: white;
 }
 
 .search {
-  background-color: #b2e5ff;
+  background: transparent;
   border-radius: 16px;
   min-height: 5vmin;
   min-width: 15%;
   text-align: center;
+  color: #dde5ff;
   outline: none;
-}
-
-.App-Header {
-  background-color: #e73a51;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.cardList {
-  background-color: #b2e5ff;
-  min-height: 100%;
 }
 
 .pagination-prev {
   padding: 8px 16px;
-  background-color: #e73a51;
+
   border-radius: 12px;
 }
 
 .pagination-next {
   padding: 8px 16px;
-  background-color: #e73a51;
+
   border-radius: 12px;
 }
 
 .pagination-next:hover {
-  background-color: #b2e5ff;
-  color: #e73a51;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 14%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }
 
 .pagination-prev:hover {
-  background-color: #b2e5ff;
-  color: #e73a51;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 14%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }
 
-.pagination-next {
-  transition-duration: 0.4s;
-}
-
-.pagination-prev {
-  transition-duration: 0.4s;
-}
-
-.CardInfo-effect:hover {
+CardInfo-effect:hover {
   background-color: #dde5ff;
   transform: scale(1.5);
 }
-.CardInfo-effect {
+CardInfo-effect {
   transition: transform 0.4s;
 }

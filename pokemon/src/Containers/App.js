@@ -10,10 +10,25 @@ import rootReducer from "./rootReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
+import styled from "styled-components";
+
+const Header = styled.div`
+background: rgb(2, 0, 36);
+background: linear-gradient(
+  0deg,
+  rgba(2, 0, 36, 1) 0%,
+  rgba(221, 8, 8, 1) 14%,
+  rgba(255, 244, 0, 1) 100%
+);
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+`;
+
 //import { load, save } from "redux-localstorage-simple";
 
 const middleware = [logger, thunk];
-
 const store = createStore(
   rootReducer,
 
@@ -35,14 +50,12 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <header className=" App-Header">
+          <Header>
             <img src={logo} className="App-Logo" alt="pokemon-logo" />
             <h2>Made Possible With PokeAPI !</h2>
             <SearchBox searchChange={this.searchChange} />
-          </header>
-
-          <Pagination />
-
+            <Pagination className="pagination" />
+          </Header>
           <div className="cardList">
             <CardArray searchfield={this.state.searchfield} />
           </div>

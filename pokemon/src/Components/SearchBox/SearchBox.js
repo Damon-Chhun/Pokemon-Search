@@ -18,7 +18,6 @@ const SearchBox = ({ searchChange }) => {
 export default SearchBox;
 
 const Search = styled.div`
-  background-color: #e73a51;
   display: flex;
   justify-content: center;
 `;
