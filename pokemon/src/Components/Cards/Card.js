@@ -3,14 +3,13 @@ import styled from "styled-components";
 import "../../Containers/App.css";
 
 const CardInfo = styled.div`
-  background: rgb(2, 0, 36);
+  background: rgb(0, 0, 0);
   background: linear-gradient(
-    180deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(8, 166, 221, 1) 14%,
-    rgba(0, 146, 255, 1) 100%
+    144deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(149, 214, 238, 1) 33%,
+    rgba(0, 145, 210, 1) 100%
   );
-
   border: solid 5px white;
   border-radius: 12px;
   height: 50vh;
@@ -20,6 +19,13 @@ const CardInfo = styled.div`
   flex-flow: column wrap;
   justify-content: center;
   align-content: center;
+`;
+
+const HoverMechanic = styled.div`
+  transition: fill 0.5s;
+  ${CardInfo}:hover & {
+    animation: bounce 1s;
+  }
 `;
 
 const Card = ({ name, index, number, weight, types }) => {

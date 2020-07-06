@@ -15,7 +15,6 @@ const PokemonGrid = styled.div`
   );
   height: auto;
   width: auto;
-
   display: flex;
   flex-flow: row wrap;
   position: relative;
