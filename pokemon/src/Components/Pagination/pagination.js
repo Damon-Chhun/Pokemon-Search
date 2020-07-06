@@ -6,6 +6,14 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { nextPage, prevPage, fetchPokemons, setPokemonInfo } from "../action";
 
+const Buttons = styled.div`
+  color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: end;
+`;
+
 class Pagination extends Component {
   async nextRequest() {
     const { pokemons, pokemonInfo } = this.props;
@@ -122,11 +130,3 @@ Pagination.propTypes = {
   fetchPokemons: PropTypes.func,
   pokemons: PropTypes.array
 };
-
-const Buttons = styled.div`
-  background-color: #e73a51;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
-`;
