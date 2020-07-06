@@ -11,7 +11,8 @@ const Buttons = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: end;
+  justify-content: center;
+  align-cotent: center;
 `;
 
 class Pagination extends Component {

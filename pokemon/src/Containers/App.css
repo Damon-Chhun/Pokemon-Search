@@ -8,6 +8,10 @@
 img {
   height: 20vh;
 }
+p {
+  display: flex;
+  justify-content: center;
+}
 ::placeholder {
   color: white;
 }
@@ -19,45 +23,44 @@ img {
   min-width: 15%;
   text-align: center;
   color: #dde5ff;
+  border: solid 2px white;
   outline: none;
 }
 
 .pagination-prev {
   padding: 8px 16px;
-
+  border: solid 2px white;
   border-radius: 12px;
+  margin-right: 4px;
+  width: 10vh;
 }
 
 .pagination-next {
   padding: 8px 16px;
-
+  border: solid 2px white;
   border-radius: 12px;
+  margin-left: 4px;
+  width: 10vh;
 }
 
 .pagination-next:hover {
-  background: rgb(2, 0, 36);
+  background: rgb(0, 0, 0);
   background: linear-gradient(
-    180deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 14%,
-    rgba(0, 212, 255, 1) 100%
+    144deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(149, 214, 238, 1) 33%,
+    rgba(0, 145, 210, 1) 100%
   );
+  color: black;
 }
 
 .pagination-prev:hover {
-  background: rgb(2, 0, 36);
+  background: rgb(0, 0, 0);
   background: linear-gradient(
-    180deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 14%,
-    rgba(0, 212, 255, 1) 100%
+    144deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(149, 214, 238, 1) 33%,
+    rgba(0, 145, 210, 1) 100%
   );
-}
-
-CardInfo-effect:hover {
-  background-color: #dde5ff;
-  transform: scale(1.5);
-}
-CardInfo-effect {
-  transition: transform 0.4s;
+  color: black;
 }
