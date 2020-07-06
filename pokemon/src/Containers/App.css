@@ -2,6 +2,9 @@
   height: 25vmin;
   width: 55vmin;
 }
+.credits {
+  color: white;
+}
 img {
   height: 20vh;
 }

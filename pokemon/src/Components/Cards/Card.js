@@ -5,7 +5,7 @@ import "../../Containers/App.css";
 const CardInfo = styled.div`
   background: rgb(2, 0, 36);
   background: linear-gradient(
-    180deg,
+    145deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(8, 166, 221, 1) 14%,
     rgba(0, 146, 255, 1) 100%

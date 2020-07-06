@@ -52,7 +52,7 @@ class App extends Component {
         <div className="App">
           <Header>
             <img src={logo} className="App-Logo" alt="pokemon-logo" />
-            <h2>Made Possible With PokeAPI !</h2>
+            <h2 className=" credits ">Made Possible With PokeAPI!</h2>
             <SearchBox searchChange={this.searchChange} />
             <Pagination className="pagination" />
           </Header>
