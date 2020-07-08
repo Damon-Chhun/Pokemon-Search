@@ -13,7 +13,7 @@ const Cards = styled.div`
   border: solid 5px white;
   border-radius: 12px;
   height: 50vh;
-  width: 38vh;
+  width: 17vw;
   margin: 2vh;
   display: flex;
   flex-flow: column wrap;
@@ -39,8 +39,8 @@ const H3 = styled.h3`
 `;
 
 const PokemonImage = styled.img`
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  margin: 5vh;
+  width: 8vw;
 `;
 
 const Card = ({ name, index, number, weight, types }) => {
