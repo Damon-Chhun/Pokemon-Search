@@ -3,19 +3,23 @@
 }
 
 .pagination-prev {
-  padding: 8px 16px;
+  padding: 1vh 1vw;
   border: solid 2px white;
-  border-radius: 12px;
-  margin-right: 4px;
-  width: 10vh;
+  border-radius: 16px;
+  margin-right: 1vw;
+  width: 7vw;
+  height: 2vh;
+  text-align: center;
 }
 
 .pagination-next {
-  padding: 8px 16px;
+  padding: 1vh 1vw;
   border: solid 2px white;
-  border-radius: 12px;
-  margin-left: 4px;
-  width: 10vh;
+  border-radius: 16px;
+  margin-left: 1vw;
+  width: 7vw;
+  height: 2vh;
+  text-align: center;
 }
 
 .pagination-next:hover {

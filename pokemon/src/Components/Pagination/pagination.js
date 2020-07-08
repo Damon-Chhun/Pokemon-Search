@@ -13,6 +13,10 @@ const Buttons = styled.div`
   flex-wrap: nowrap;
 `;
 
+const PaginationText = styled.p`
+  font-size: 2vh;
+`;
+
 class Pagination extends Component {
   async nextRequest() {
     const { pokemons, pokemonInfo } = this.props;
@@ -79,12 +83,18 @@ class Pagination extends Component {
   render() {
     return (
       <Buttons>
-        <p onClick={this.requestForPrevPage} className="pagination-prev">
+        <PaginationText
+          onClick={this.requestForPrevPage}
+          className="pagination-prev"
+        >
           &laquo; Previous
-        </p>
-        <p onClick={this.requestForNextPage} className="pagination-next">
+        </PaginationText>
+        <PaginationText
+          onClick={this.requestForNextPage}
+          className="pagination-next"
+        >
           Next &raquo;
-        </p>
+        </PaginationText>
       </Buttons>
     );
   }
