@@ -16,6 +16,7 @@ const SearchStyling = styled.input`
   color: #dde5ff;
   border: solid 2px white;
   outline: none;
+  font-size: 2vh;
 `;
 
 const SearchBox = ({ searchChange }) => {
