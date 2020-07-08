@@ -6,18 +6,11 @@ import { bindActionCreators } from "redux";
 import { fetchPokemons, setPokemonInfo } from "../action";
 
 const PokemonGrid = styled.div`
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    180deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(221, 8, 8, 1) 14%,
-    rgba(255, 244, 0, 1) 100%
-  );
-  height: auto;
-  width: auto;
+  background: transparent;
   display: flex;
   flex-flow: row wrap;
-  position: relative;
+  height: auto;
+  width: 100vw;
 `;
 
 class CardArray extends Component {

@@ -11,21 +11,6 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 import styled from "styled-components";
-
-const Header = styled.div`
-background: rgb(2, 0, 36);
-background: linear-gradient(
-  0deg,
-  rgba(2, 0, 36, 1) 0%,
-  rgba(221, 8, 8, 1) 14%,
-  rgba(255, 244, 0, 1) 100%
-);
-display: flex;
-flex-direction: column;
-align-items: center;
-}
-`;
-
 //import { load, save } from "redux-localstorage-simple";
 
 const middleware = [logger, thunk];
@@ -49,20 +34,57 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
+        <APP>
           <Header>
-            <img src={logo} className="App-Logo" alt="pokemon-logo" />
-            <h2 className=" credits ">Made Possible With PokeAPI!</h2>
+            <PokemonLogo src={logo} className="App-Logo" alt="pokemon-logo" />
+            <Credits className=" credits ">Made Possible With PokéAPI!</Credits>
             <SearchBox searchChange={this.searchChange} />
             <Pagination className="pagination" />
           </Header>
-          <div className="cardList">
+          <Body>
             <CardArray searchfield={this.state.searchfield} />
-          </div>
-        </div>
+          </Body>
+        </APP>
       </Provider>
     );
   }
 }
 
 export default App;
+
+const APP = styled.div`
+  min-height: 100vh;
+  min-width: auto;
+  background: rgb(189, 19, 19);
+  background: linear-gradient(
+    0deg,
+    rgba(189, 19, 19, 1) 0%,
+    rgba(80, 0, 9, 1) 60%,
+    rgba(49, 143, 200, 1) 93%
+  );
+  background-attachment: fixed;
+`;
+
+const Header = styled.div`
+background: transparent;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+`;
+
+const PokemonLogo = styled.img`
+  height: 25vh;
+  width: 25vw;
+`;
+
+const Credits = styled.h2`
+  color: white;
+  font-size: 3vh;
+`;
+
+const Body = styled.div`
+  background: transparent;
+  height: auto;
+  width: auto;
+`;
