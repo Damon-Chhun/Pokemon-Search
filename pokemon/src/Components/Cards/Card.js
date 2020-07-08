@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import "../../Containers/App.css";
 
-const CardInfo = styled.div`
+const Cards = styled.div`
   background: rgb(0, 0, 0);
   background: linear-gradient(
     144deg,
@@ -21,29 +21,46 @@ const CardInfo = styled.div`
   align-content: center;
 `;
 
-const HoverMechanic = styled.div`
-  transition: fill 0.5s;
-  ${CardInfo}:hover & {
-    animation: bounce 1s;
-  }
+const CardInformation = styled.div`
+    display: flex;
+    flex-flow: column wrap;
+    justify-content center; 
+    align-content: center;
+`;
+
+const H1 = styled.h1`
+  font-size: 3vh;
+  margin: 5px;
+`;
+
+const H3 = styled.h3`
+  font-size: 2vh;
+  margin: 5px;
+`;
+
+const PokemonImage = styled.img`
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 `;
 
 const Card = ({ name, index, number, weight, types }) => {
   const type = types || [];
   // console.log(type, "TYPE CHECK");
   return (
-    <CardInfo className="CardInfo">
-      <h1> {name} </h1>
-      <h3> Number: {number} </h3>
-      <img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`}
-        alt="pokemon"
-      />
-      <h3>
-        Type: {type[0]} {type[1]}
-      </h3>
-      <h3>Weight: {weight} </h3>
-    </CardInfo>
+    <Cards>
+      <CardInformation>
+        <H1> {name} </H1>
+        <H3> Number: {number} </H3>
+        <PokemonImage
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`}
+          alt="pokemon"
+        />
+        <H3>
+          Type: {type[0]} {type[1]}
+        </H3>
+        <H3>Weight: {weight} </H3>
+      </CardInformation>
+    </Cards>
   );
 };
 
