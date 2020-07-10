@@ -30,12 +30,15 @@ const CardInformation = styled.div`
 
 const H1 = styled.h1`
   font-size: 3vh;
-  margin: 5px;
+  margin: 3vh;
+  margin-bottom: 5px;
+  text-align: center;
 `;
 
 const H3 = styled.h3`
   font-size: 2vh;
-  margin: 5px;
+  margin: 1vh;
+  text-align: center;
 `;
 
 const PokemonImage = styled.img`
