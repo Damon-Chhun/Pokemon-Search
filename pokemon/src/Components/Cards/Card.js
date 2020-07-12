@@ -10,9 +10,9 @@ const Cards = styled.div`
     rgba(149, 214, 238, 1) 33%,
     rgba(0, 145, 210, 1) 100%
   );
-  border: solid 5px white;
+  border: solid 4px white;
   border-radius: 12px;
-  height: 50vh;
+  height: 45vh;
   width: 17vw;
   margin: 2vh;
   display: flex;
@@ -30,21 +30,18 @@ const CardInformation = styled.div`
 
 const H1 = styled.h1`
   font-size: 3vh;
-  margin: 3vh;
-  margin-bottom: 5px;
   text-align: center;
 `;
 
 const H3 = styled.h3`
   font-size: 2vh;
-  margin: 1vh;
   text-align: center;
 `;
 
 const PokemonImage = styled.img`
-  margin: 5vh;
-  width: 6vw;
-  height: 15vh;
+  width: 8vw;
+  margin-left: auto;
+  margin-right: auto; 
 `;
 
 const Card = ({ name, index, number, weight, types }) => {
