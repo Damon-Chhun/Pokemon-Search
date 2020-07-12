@@ -10,9 +10,9 @@ const Cards = styled.div`
     rgba(149, 214, 238, 1) 33%,
     rgba(0, 145, 210, 1) 100%
   );
-  border: solid 5px white;
+  border: solid 4px white;
   border-radius: 12px;
-  height: 50vh;
+  height: 45vh;
   width: 17vw;
   margin: 2vh;
   display: flex;

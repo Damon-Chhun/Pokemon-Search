@@ -11,13 +11,15 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 import styled from "styled-components";
-//import { load, save } from "redux-localstorage-simple";
+import { load, save } from "redux-localstorage-simple";
 
 const middleware = [logger, thunk];
 const store = createStore(
   rootReducer,
-
-  composeWithDevTools(applyMiddleware(...middleware))
+  load({ states: ["card", "Pagination"] }),
+  composeWithDevTools(
+    applyMiddleware(...middleware, save({ states: ["card", "Pagination"] }))
+  )
 );
 
 class App extends Component {
@@ -54,7 +56,7 @@ export default App;
 
 const APP = styled.div`
   min-height: 100vh;
-  min-width: auto;
+  min-width: 100vw;
   background: rgb(189, 19, 19);
   background: linear-gradient(
     0deg,
@@ -74,13 +76,13 @@ align-items: center;
 `;
 
 const PokemonLogo = styled.img`
-  height: 25vh;
-  width: 25vw;
+  height: 20vh;
+  width: 20vw;
 `;
 
 const Credits = styled.h2`
   color: white;
-  font-size: 3vh;
+  font-size: 2vh;
 `;
 
 const Body = styled.div`

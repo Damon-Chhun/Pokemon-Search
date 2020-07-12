@@ -79,10 +79,11 @@ class CardArray extends Component {
                   return types.type.name;
                 })
               : null;
+
             return (
               <div key={index} className="testing">
                 <Card
-                  name={pokemons.name}
+                  name={found ? found.name : null}
                   index={newIndex}
                   number={newIndex}
                   weight={found ? found.weight : null}
@@ -101,7 +102,8 @@ const mapStateToProps = state => ({
   offset: state.pagination.value,
   pokemons: state.card.pokemons,
   pokemonInfo: state.pokemonInfo.pokemonInfo,
-  pokemonInfoLoaded: state.pokemonInfoLoaded
+  pokemonInfoLoaded: state.pokemonInfoLoaded,
+  weight: state.pokemonInfo.weight
 });
 
 const mapDispatchToProps = dispatch =>
