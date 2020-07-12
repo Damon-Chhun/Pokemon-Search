@@ -30,20 +30,18 @@ const CardInformation = styled.div`
 
 const H1 = styled.h1`
   font-size: 3vh;
-
   text-align: center;
 `;
 
 const H3 = styled.h3`
   font-size: 2vh;
-
   text-align: center;
 `;
 
 const PokemonImage = styled.img`
   width: 8vw;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; 
 `;
 
 const Card = ({ name, index, number, weight, types }) => {
