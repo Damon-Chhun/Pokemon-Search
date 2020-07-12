@@ -9,6 +9,7 @@ const PokemonGrid = styled.div`
   background: transparent;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   height: auto;
   width: 100vw;
 `;
