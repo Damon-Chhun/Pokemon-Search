@@ -11,6 +11,7 @@ const CardInformation = styled.div`
 const Container = styled.div`
   &:hover {
     animation: float 3s ease-in-out infinite;
+    border-radius 16px;
   }
 `;
 const Cards = styled.div`
@@ -35,11 +36,13 @@ const Cards = styled.div`
 const H1 = styled.h1`
   font-size: 3vh;
   text-align: center;
+  text-transform: capitalize;
 `;
 
 const H3 = styled.h3`
   font-size: 2vh;
   text-align: center;
+  text-transform: capitalize;
 `;
 
 const PokemonImage = styled.img`
