@@ -4,6 +4,7 @@ import logo from "./logo.png";
 import Pagination from "../Components/Pagination/pagination";
 import CardArray from "../Components/Cards/CardArray";
 import SearchBox from "../Components/SearchBox/SearchBox";
+import Spinner from "../Components/Spinner";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./rootReducer";

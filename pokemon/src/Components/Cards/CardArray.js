@@ -1,9 +1,16 @@
 import React, { Component } from "react";
+import "../../Containers/App.css";
 import Card from "./Card";
+import Spinner from "../Spinner";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchPokemons, setPokemonInfo } from "../action";
+import {
+  fetchPokemons,
+  setPokemonInfo,
+  fetchingData,
+  receivedData
+} from "../action";
 
 const PokemonGrid = styled.div`
   background: transparent;
@@ -16,6 +23,7 @@ const PokemonGrid = styled.div`
 
 class CardArray extends Component {
   async componentDidMount() {
+    await this.props.fetchingData();
     await this.props.fetchPokemons(this.props.offset);
 
     const defs = this.props.pokemons.reduce((accumulator, { url }) => {
@@ -35,6 +43,7 @@ class CardArray extends Component {
     }, []);
     const pokemonData = await Promise.all(defs);
     await this.props.setPokemonInfo(pokemonData);
+    await this.props.receivedData();
   }
 
   componentDidUpdate(prevProps) {
@@ -65,36 +74,40 @@ class CardArray extends Component {
 
   render() {
     const { pokemonInfo = [] } = this.props;
-    return (
-      <PokemonGrid>
-        {this.updateFilteredPokemon(this.props.searchfield).map(
-          (pokemons, index) => {
-            const found = pokemonInfo.find(
-              ({ name }) => name === pokemons.name
-            );
-            const initialIndex = pokemons.url.replace("v2", "");
-            const newIndex = initialIndex.replace(/[^0-9]/g, "");
-            const types = found
-              ? found.types.map(types => {
-                  return types.type.name;
-                })
-              : null;
+    if (this.props.LoadingData === true) {
+      return <Spinner />;
+    } else {
+      return (
+        <PokemonGrid>
+          {this.updateFilteredPokemon(this.props.searchfield).map(
+            (pokemons, index) => {
+              const found = pokemonInfo.find(
+                ({ name }) => name === pokemons.name
+              );
+              const initialIndex = pokemons.url.replace("v2", "");
+              const newIndex = initialIndex.replace(/[^0-9]/g, "");
+              const types = found
+                ? found.types.map(types => {
+                    return types.type.name;
+                  })
+                : null;
 
-            return (
-              <div key={index} className="testing">
-                <Card
-                  name={found ? found.name : null}
-                  index={newIndex}
-                  number={newIndex}
-                  weight={found ? found.weight : null}
-                  types={types}
-                />
-              </div>
-            );
-          }
-        )}
-      </PokemonGrid>
-    );
+              return (
+                <div key={index} className="testing">
+                  <Card
+                    name={found ? found.name : null}
+                    index={newIndex}
+                    number={newIndex}
+                    weight={found ? found.weight : null}
+                    types={types}
+                  />
+                </div>
+              );
+            }
+          )}
+        </PokemonGrid>
+      );
+    }
   }
 }
 
@@ -103,14 +116,16 @@ const mapStateToProps = state => ({
   pokemons: state.card.pokemons,
   pokemonInfo: state.pokemonInfo.pokemonInfo,
   pokemonInfoLoaded: state.pokemonInfoLoaded,
-  weight: state.pokemonInfo.weight
+  LoadingData: state.pagination.fetchingData
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       fetchPokemons,
-      setPokemonInfo
+      setPokemonInfo,
+      fetchingData,
+      receivedData
     },
 
     dispatch

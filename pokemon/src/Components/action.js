@@ -37,3 +37,17 @@ export const setPokemonInfo = data => dispatch => {
     data: data
   });
 };
+
+export const fetchingData = () => {
+  return {
+    type: "fetchingData",
+    data: true
+  };
+};
+
+export const receivedData = () => {
+  return {
+    type: "ReceivedData",
+    data: true
+  };
+};

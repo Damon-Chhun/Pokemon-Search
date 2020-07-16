@@ -4,7 +4,14 @@ import PropTypes from "prop-types";
 import "../../Containers/App.css";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { nextPage, prevPage, fetchPokemons, setPokemonInfo } from "../action";
+import {
+  nextPage,
+  prevPage,
+  fetchPokemons,
+  setPokemonInfo,
+  fetchingData,
+  receivedData
+} from "../action";
 
 const Buttons = styled.div`
   color: white;
@@ -34,6 +41,7 @@ class Pagination extends Component {
     console.log(checkingNames, "CHECKING NAMES");
 
     if (checkingNames !== true) {
+      this.props.fetchingData();
       const defs = this.props.pokemons.reduce((accumulator, { url }) => {
         const def = new Promise(async (resolve, reject) => {
           try {
@@ -51,6 +59,7 @@ class Pagination extends Component {
       }, []);
       const pokemonData = await Promise.all(defs);
       await this.props.setPokemonInfo(pokemonData);
+      this.props.receivedData();
     } else {
       console.log("ERROR WHEN SETTING POKEMON");
     }
@@ -73,6 +82,7 @@ class Pagination extends Component {
     const { offset: currOffset } = this.props;
     if (prevOffset < currOffset) {
       await this.props.fetchPokemons(this.props.offset);
+
       console.log(this.props.pokemons, "FETCH POKEMONS!!!!!");
       await this.nextRequest();
     } else if (prevOffset > currOffset) {
@@ -117,7 +127,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       nextPage,
       prevPage,
       fetchPokemons,
-      setPokemonInfo
+      setPokemonInfo,
+      fetchingData,
+      receivedData
     },
     dispatch
   );
