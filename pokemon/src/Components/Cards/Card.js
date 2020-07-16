@@ -39,9 +39,10 @@ const H3 = styled.h3`
 `;
 
 const PokemonImage = styled.img`
-  width: 8vw;
   margin-left: auto;
   margin-right: auto;
+  width: 6vw;
+  height: 15vh;
 `;
 
 const Card = ({ name, index, number, weight, types }) => {
