@@ -4,6 +4,7 @@ import logo from "./logo.png";
 import Pagination from "../Components/Pagination/pagination";
 import CardArray from "../Components/Cards/CardArray";
 import SearchBox from "../Components/SearchBox/SearchBox";
+import PokemonDetails from "../Components/PokemonDetails";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./rootReducer";
@@ -12,6 +13,7 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 import styled from "styled-components";
 import { load, save } from "redux-localstorage-simple";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 const middleware = [logger, thunk];
 const store = createStore(
@@ -35,19 +37,30 @@ class App extends Component {
 
   render() {
     return (
-      <Provider store={store}>
-        <APP>
-          <Header>
-            <PokemonLogo src={logo} className="App-Logo" alt="pokemon-logo" />
-            <Credits className=" credits ">Made Possible With PokéAPI!</Credits>
-            <SearchBox searchChange={this.searchChange} />
-            <Pagination className="pagination" />
-          </Header>
-          <Body>
-            <CardArray searchfield={this.state.searchfield} />
-          </Body>
-        </APP>
-      </Provider>
+      <Router>
+        <Provider store={store}>
+          <APP>
+            <Header>
+              <Link to="/">
+                <PokemonLogo src={logo} alt="pokemon-logo" />
+              </Link>
+              <Credits>Made Possible With PokéAPI!</Credits>
+              <SearchBox searchChange={this.searchChange} />
+              <Pagination className="pagination" />
+            </Header>
+            <Switch>
+              <Body>
+                <Route exact path="/">
+                  <CardArray searchfield={this.state.searchfield} />
+                </Route>
+                <Route path="/Test">
+                  <PokemonDetails />
+                </Route>
+              </Body>
+            </Switch>
+          </APP>
+        </Provider>
+      </Router>
     );
   }
 }

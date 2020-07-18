@@ -42,8 +42,8 @@ class CardArray extends Component {
       return accumulator;
     }, []);
     const pokemonData = await Promise.all(defs);
-    await this.props.setPokemonInfo(pokemonData);
-    await this.props.receivedData();
+    this.props.setPokemonInfo(pokemonData);
+    this.props.receivedData();
   }
 
   componentDidUpdate(prevProps) {

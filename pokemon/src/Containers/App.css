@@ -1,7 +1,10 @@
 ::placeholder {
   color: white;
 }
-
+a {
+  text-decoration: none;
+  color: black;
+}
 .pagination-prev {
   padding: 1vh 1vw;
   border: solid 2px white;
@@ -21,6 +24,7 @@
   height: 2vh;
   text-align: center;
 }
+
 .pagination-next:hover {
   background: rgb(0, 0, 0);
   background: linear-gradient(
@@ -42,7 +46,6 @@
   );
   color: black;
 }
-
 @keyframes float {
   0% {
     box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
@@ -61,7 +64,6 @@
 CardInformation:hover {
   animation: float 6s ease-in-out infinite;
 }
-
 .loader {
   color: #ffffff;
   font-size: 90px;
