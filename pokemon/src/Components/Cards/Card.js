@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import "../../Containers/App.css";
+import { Link } from "react-router-dom";
 
 const CardInformation = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content center; 
     align-content: center;
+    
 `;
 const Container = styled.div`
   &:hover {
@@ -57,20 +59,22 @@ const Card = ({ name, index, number, weight, types }) => {
   // console.log(type, "TYPE CHECK");
   return (
     <Container>
-      <Cards>
-        <CardInformation>
-          <H1> {name} </H1>
-          <H3> Number: {number} </H3>
-          <PokemonImage
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`}
-            alt="pokemon"
-          />
-          <H3>
-            Type: {type[0]} {type[1]}
-          </H3>
-          <H3>Weight: {weight} </H3>
-        </CardInformation>
-      </Cards>
+      <Link to="/Test">
+        <Cards>
+          <CardInformation>
+            <H1> {name} </H1>
+            <H3> Number: {number} </H3>
+            <PokemonImage
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`}
+              alt="pokemon"
+            />
+            <H3>
+              Type: {type[0]} {type[1]}
+            </H3>
+            <H3>Weight: {weight} </H3>
+          </CardInformation>
+        </Cards>
+      </Link>
     </Container>
   );
 };
