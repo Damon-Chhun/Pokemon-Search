@@ -53,9 +53,10 @@ class App extends Component {
                 <Route exact path="/">
                   <CardArray searchfield={this.state.searchfield} />
                 </Route>
-                <Route path="/Test">
-                  <PokemonDetails />
-                </Route>
+                <Route
+                  path="/:index"
+                  render={props => <PokemonDetails {...props} />}
+                />
               </Body>
             </Switch>
           </APP>
