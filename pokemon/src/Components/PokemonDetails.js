@@ -13,9 +13,6 @@ class PokemonDetail extends Component {
   componentDidMount() {
     this.props.gatherStats(this.props.pokemonInfo, this.props.match.params.id);
   }
-  componentWillUnmount() {
-    this.props.history.push("/");
-  }
   render() {
     return this.props.stats.map((numbers, index) => {
       return (
