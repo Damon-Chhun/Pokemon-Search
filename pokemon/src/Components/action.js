@@ -53,6 +53,7 @@ export const receivedData = () => {
 };
 
 export const gatherStats = (pokemonInfo, match) => dispatch => {
+  console.log(pokemonInfo, match);
   const element = pokemonInfo[match - 1];
   const base_stat = element
     ? element.stats.map(object => {

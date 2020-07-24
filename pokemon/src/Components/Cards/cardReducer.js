@@ -1,7 +1,8 @@
 import { GET_POKEMONS } from "../action";
 
 const initialState = {
-  pokemons: []
+  pokemons: [],
+  pokemonLoadedAt: null
 };
 
 export default function(state = initialState, action) {
@@ -9,7 +10,8 @@ export default function(state = initialState, action) {
   switch (type) {
     case GET_POKEMONS:
       return {
-        pokemons: data
+        pokemons: data,
+        pokemonLoadedAt: new Date()
       };
 
     default:

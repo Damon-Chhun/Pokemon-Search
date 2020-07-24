@@ -3,7 +3,7 @@ import { GET_OFFSET } from "../action";
 const initialState = {
   value: 0,
   fetchingData: false,
-  receivedData: false
+  receivedData: true
 };
 
 export default function(state = initialState, action) {
