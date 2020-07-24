@@ -1,7 +1,16 @@
 import { SET_POKEMONINFO } from "../action";
 
 const initialState = {
-  pokemonInfo: []
+  pokemonInfo: [],
+  stats: [],
+  statsNames: [
+    "HP",
+    "Attack",
+    "Defense",
+    "Special-Attack",
+    "Special-Defense",
+    "Speed"
+  ]
 };
 
 export default function(state = initialState, action) {
@@ -11,6 +20,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         pokemonInfo: state.pokemonInfo.concat(data)
+      };
+    case "GATHER_STATS":
+      return {
+        ...state,
+        stats: data
       };
 
     default:

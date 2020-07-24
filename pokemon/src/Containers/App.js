@@ -5,24 +5,11 @@ import Pagination from "../Components/Pagination/pagination";
 import CardArray from "../Components/Cards/CardArray";
 import SearchBox from "../Components/SearchBox/SearchBox";
 import PokemonDetails from "../Components/PokemonDetails";
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import rootReducer from "./rootReducer";
-import { composeWithDevTools } from "redux-devtools-extension";
-import logger from "redux-logger";
-import thunk from "redux-thunk";
-import styled from "styled-components";
-import { load, save } from "redux-localstorage-simple";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import store from "./store";
 
-const middleware = [logger, thunk];
-const store = createStore(
-  rootReducer,
-  load({ states: ["card", "Pagination"] }),
-  composeWithDevTools(
-    applyMiddleware(...middleware, save({ states: ["card", "Pagination"] }))
-  )
-);
+import { Provider } from "react-redux";
+import styled from "styled-components";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -37,7 +24,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router basename="/">
         <Provider store={store}>
           <APP>
             <Header>
@@ -54,7 +41,7 @@ class App extends Component {
                   <CardArray searchfield={this.state.searchfield} />
                 </Route>
                 <Route
-                  path="/:index"
+                  path="/:id"
                   render={props => <PokemonDetails {...props} />}
                 />
               </Body>

@@ -59,7 +59,7 @@ const Card = ({ name, index, number, weight, types }) => {
   // console.log(type, "TYPE CHECK");
   return (
     <Container>
-      <Link to={`${index}`}>
+      <Link to={`${number}`}>
         <Cards>
           <CardInformation>
             <H1> {name} </H1>
