@@ -23,14 +23,8 @@ const PokemonGrid = styled.div`
 
 class CardArray extends Component {
   async componentDidMount() {
-    const oneHour = 60 * 60 * 1000;
-    if (
-      this.props.LoadingData === false ||
-      new Date() - this.props.pokemonsLoadedAt > oneHour
-    ) {
-      await this.props.fetchingData();
-      await this.props.fetchPokemons(this.props.offset);
-    }
+    await this.props.fetchingData();
+    await this.props.fetchPokemons(this.props.offset);
     const defs = this.props.pokemons.reduce((accumulator, { url }) => {
       const def = new Promise(async (resolve, reject) => {
         try {
@@ -47,8 +41,8 @@ class CardArray extends Component {
       return accumulator;
     }, []);
     const pokemonData = await Promise.all(defs);
-    this.props.setPokemonInfo(pokemonData);
-    this.props.receivedData();
+    await this.props.setPokemonInfo(pokemonData);
+    await this.props.receivedData();
   }
 
   componentDidUpdate(prevProps) {

@@ -32,6 +32,7 @@ export const fetchPokemons = offset => async dispatch => {
 };
 
 export const setPokemonInfo = data => dispatch => {
+  console.log(data);
   return dispatch({
     type: SET_POKEMONINFO,
     data: data
@@ -55,11 +56,9 @@ export const receivedData = () => {
 export const gatherStats = (pokemonInfo, match) => dispatch => {
   console.log(pokemonInfo, match);
   const element = pokemonInfo[match - 1];
-  const base_stat = element
-    ? element.stats.map(object => {
-        return object.base_stat;
-      })
-    : null;
+  const base_stat = element.stats.map(object => {
+    return object.base_stat;
+  });
   console.log(base_stat);
 
   return dispatch({

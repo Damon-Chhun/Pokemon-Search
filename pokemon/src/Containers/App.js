@@ -28,7 +28,7 @@ class App extends Component {
         <Provider store={store}>
           <APP>
             <Header>
-              <Link to="/">
+              <Link to="/Pokemon-Search">
                 <PokemonLogo src={logo} alt="pokemon-logo" />
               </Link>
               <Credits>Made Possible With PokéAPI!</Credits>
@@ -36,15 +36,15 @@ class App extends Component {
               <Pagination className="pagination" />
             </Header>
             <Switch>
-              <Body>
-                <Route exact path="/">
+              <Route exact path="/Pokemon-Search">
+                <Body>
                   <CardArray searchfield={this.state.searchfield} />
-                </Route>
-                <Route
-                  path="/:id"
-                  render={props => <PokemonDetails {...props} />}
-                />
-              </Body>
+                </Body>
+              </Route>
+              <Route
+                path="/:id"
+                render={props => <PokemonDetails {...props} />}
+              />
             </Switch>
           </APP>
         </Provider>

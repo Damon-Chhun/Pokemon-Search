@@ -16,7 +16,15 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-  saveToLocalStorage(store.getState());
+  saveToLocalStorage(
+    store.getState()
+    /* {
+    card: store.getState().card.pokemons,
+    pokemonInfo: store.getState().pokemonInfo.pokemonInfo,
+    statsNames: store.getState().pokemonInfo.statsNames
+    stats: store.getState().pokemonInfo.stats
+  } */
+  );
 });
 
 export default store;

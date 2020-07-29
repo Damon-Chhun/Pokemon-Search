@@ -6,6 +6,7 @@ export const loadFromLocalStorage = () => {
     }
     return JSON.parse(checkingState);
   } catch (err) {
+    console.log(err);
     return undefined;
   }
 };
@@ -14,7 +15,5 @@ export const saveToLocalStorage = state => {
   try {
     const checkingState = JSON.stringify(state);
     localStorage.setItem("store", checkingState);
-  } catch (err) {
-    return undefined;
-  }
+  } catch (err) {}
 };
