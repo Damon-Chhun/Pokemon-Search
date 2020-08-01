@@ -56,7 +56,8 @@ export const receivedData = () => {
 export const gatherStats = (pokemonInfo, match) => dispatch => {
   console.log(pokemonInfo, match);
   const element = pokemonInfo[match - 1];
-  const base_stat = element.stats.map(object => {
+  const statsArray = element.stats;
+  const base_stat = statsArray.map(object => {
     return object.base_stat;
   });
   console.log(base_stat);

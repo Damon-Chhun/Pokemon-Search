@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { gatherStats } from "./action";
 import { withRouter } from "react-router-dom";
-import Spinner from "./Spinner";
+//import Spinner from "./Spinner";
 
 const H1 = styled.h1`
   color: white;
