@@ -53,17 +53,20 @@ export const receivedData = () => {
   };
 };
 
-export const gatherStats = (pokemonInfo, match) => dispatch => {
+export const gatherStats = (pokemonInfo, match) => async dispatch => {
   console.log(pokemonInfo, match);
-  const element = pokemonInfo[match - 1];
-  const statsArray = element.stats;
-  const base_stat = statsArray.map(object => {
-    return object.base_stat;
-  });
-  console.log(base_stat);
+  try {
+    const element = pokemonInfo[match - 1];
+    const statsArray = element.stats;
+    const base_stat = statsArray.map(object => {
+      return object.base_stat;
+    });
 
-  return dispatch({
-    type: "GATHER_STATS",
-    data: base_stat
-  });
+    return dispatch({
+      type: "GATHER_STATS",
+      data: base_stat
+    });
+  } catch (e) {
+    console.log(e);
+  }
 };
