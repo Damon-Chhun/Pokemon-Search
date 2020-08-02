@@ -1,4 +1,4 @@
-export const loadFromLocalStorage = () => {
+export function loadFromLocalStorage() {
   try {
     const checkingState = localStorage.getItem("store");
     if (checkingState === null) {
@@ -9,11 +9,11 @@ export const loadFromLocalStorage = () => {
     console.log(err);
     return undefined;
   }
-};
+}
 
-export const saveToLocalStorage = state => {
+export function saveToLocalStorage(store) {
   try {
-    const checkingState = JSON.stringify(state);
+    const checkingState = JSON.stringify(store);
     localStorage.setItem("store", checkingState);
   } catch (err) {}
-};
+}
