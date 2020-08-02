@@ -44,7 +44,7 @@ class App extends Component {
                 </Body>
               </Route>
               <Route
-                path="/Pokemon-Search/:id"
+                path="/:id"
                 render={props => <PokemonDetails {...props} />}
               />
             </Switch>
