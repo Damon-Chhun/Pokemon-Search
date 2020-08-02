@@ -32,11 +32,13 @@ class App extends Component {
                 <PokemonLogo src={logo} alt="pokemon-logo" />
               </Link>
               <Credits>Made Possible With PokéAPI!</Credits>
-              <SearchBox searchChange={this.searchChange} />
-              <Pagination className="pagination" />
             </Header>
             <Switch>
               <Route exact path="/Pokemon-Search">
+                <Header>
+                  <SearchBox searchChange={this.searchChange} />
+                  <Pagination className="pagination" />
+                </Header>
                 <Body>
                   <CardArray searchfield={this.state.searchfield} />
                 </Body>
