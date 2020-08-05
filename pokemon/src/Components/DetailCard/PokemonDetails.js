@@ -1,15 +1,11 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { gatherStats } from "./action";
+import { gatherStats } from "../action";
 import { withRouter } from "react-router-dom";
+import DetailCard from "./DetailCard";
 
-const H1 = styled.h1`
-  color: white;
-  text-align: center;
-`;
-class PokemonDetail extends Component {
+class PokemonDetails extends Component {
   componentDidMount() {
     this.props.gatherStats(this.props.pokemonInfo, this.props.match.params.id);
   }
@@ -17,17 +13,13 @@ class PokemonDetail extends Component {
   componentWillUnmount() {}
 
   render() {
-    if (this.props.stats === undefined) {
-      return <H1>Testing</H1>;
-    } else {
-      return this.props.stats.map((numbers, index) => {
-        return (
-          <H1>
-            {this.props.statProps[index]}:{numbers}
-          </H1>
-        );
-      });
-    }
+    return (
+      <DetailCard
+        pokemonNumber={this.props.match.params.id}
+        stats={this.props.stats}
+        statNames={this.props.statProps}
+      />
+    );
   }
 }
 
@@ -47,5 +39,5 @@ const mapDispatchToProps = dispatch =>
   );
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(PokemonDetail)
+  connect(mapStateToProps, mapDispatchToProps)(PokemonDetails)
 );

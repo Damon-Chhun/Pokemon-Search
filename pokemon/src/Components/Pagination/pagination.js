@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import { PaginationText, Buttons } from "./StyledComponents";
 import PropTypes from "prop-types";
 import "../../Containers/App.css";
 import { bindActionCreators } from "redux";
@@ -12,24 +12,6 @@ import {
   fetchingData,
   receivedData
 } from "../action";
-
-const PaginationText = styled.p`
-  font-size: 2vh;
-  padding: 1vh 1vw;
-  border: solid 2px white;
-  border-radius: 16px;
-  margin-right: 1vw;
-  width: 7vw;
-  height: 2vh;
-  text-align: center;
-`;
-
-const Buttons = styled.div`
-  color: white;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-`;
 
 class Pagination extends Component {
   async nextRequest() {
