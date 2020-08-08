@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   PokemonImage,
   Card,
@@ -7,10 +7,19 @@ import {
   StatName,
   OuterBarContainer,
   StatContainer,
-  RowContainer
+  RowContainer,
+  InfoContainer
 } from "./StyledComponents";
 
-const DetailCard = ({ stats, pokemonNumber, statNames }) => (
+const DetailCard = ({
+  stats,
+  pokemonNumber,
+  statNames,
+  height,
+  weight,
+  types,
+  index
+}) => (
   <Container>
     <Card>
       <PokemonImage
@@ -102,6 +111,11 @@ const DetailCard = ({ stats, pokemonNumber, statNames }) => (
           />
         </RowContainer>
       </StatContainer>
+      <InfoContainer>
+        <h3>#{index}</h3>
+        <h3>Height: {height}</h3>
+        <h3>Weight: {weight}</h3>
+      </InfoContainer>
     </Card>
   </Container>
 );

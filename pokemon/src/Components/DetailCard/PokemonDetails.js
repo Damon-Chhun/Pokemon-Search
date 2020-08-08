@@ -13,11 +13,20 @@ class PokemonDetails extends Component {
   componentWillUnmount() {}
 
   render() {
+    const types = this.props.pokemonInfo[
+      this.props.match.params.id - 1
+    ].types.map(types => {
+      return types.type.name;
+    });
     return (
       <DetailCard
         pokemonNumber={this.props.match.params.id}
         stats={this.props.stats}
         statNames={this.props.statProps}
+        height={this.props.pokemonInfo[this.props.match.params.id - 1].height}
+        weight={this.props.pokemonInfo[this.props.match.params.id - 1].weight}
+        types={types}
+        index={this.props.match.params.id}
       />
     );
   }

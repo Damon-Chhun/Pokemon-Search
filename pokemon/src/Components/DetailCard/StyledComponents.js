@@ -8,12 +8,18 @@ export const PokemonImage = styled.img`
   background: grey;
 `;
 
+export const InfoContainer = styled.div`
+  height: 28.5vh;
+  width: 15.2vw;
+  border: solid 2px black;
+`;
+
 export const Card = styled.div`
   background: transparent;
   height: 60vh;
   width: 60vw;
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: wrap;
   border: solid 3px white;
 `;
 
@@ -21,7 +27,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 5px purple;
 `;
 
 export const Bar = styled.div`
