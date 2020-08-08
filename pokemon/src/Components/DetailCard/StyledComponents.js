@@ -1,19 +1,20 @@
 import styled from "styled-components";
 
 export const PokemonImage = styled.img`
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0;
   height: 30vh;
   width: 15vw;
-  border: dotted 5px blue;
+  border: solid 5px black;
+  background: grey;
 `;
 
 export const Card = styled.div`
-  background: white;
+  background: transparent;
   height: 60vh;
-  width: 45vw;
+  width: 60vw;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: no-wrap;
+  border: solid 3px white;
 `;
 
 export const Container = styled.div`
@@ -23,37 +24,42 @@ export const Container = styled.div`
   border: solid 5px purple;
 `;
 
-export const PokemonBar = styled.div`
-  background-color: red;
-  height: 5vh;
+export const Bar = styled.div`
   border-radius: 8px;
-  margin-left: 5px;
+  border: solid 2px black;
+  height: 3vh;
+  animation: load 3s normal forwards;
+  box-shadow: 0 10px 40px -10px #fff;
 `;
-export const StatName = styled.p`
-  background: transparent;
+
+export const StatName = styled.h3`
+  font-size: 1.5vh;
+  text-align: start;
+  position: relative;
 `;
-export const HPContainer = styled.div`
-  border: solid 5px pink;
-  width: 25vw;
-  height: 5vh;
+export const OuterBarContainer = styled.div`
+  width: 5vw;
+  height: 4.6vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   background-color: pink;
-`;
-export const AttackContainer = styled.div`
-  border: solid 5px orange;
-  width: 25vw;
-  height: 5vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background-color: orange;
 `;
 
 export const StatContainer = styled.div`
-  border: dotted 5px orange;
+  width: 43.95vw;
+  height: 30vh;
+  margin: 0;
+  border: solid 4px orange;
+`;
+
+export const RowContainer = styled.div`
+  width: 100;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: no-wrap;
+  justify-content: start;
+  align-items: center;
+  border: solid 2px black;
 `;
