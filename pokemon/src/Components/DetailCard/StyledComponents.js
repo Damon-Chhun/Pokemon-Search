@@ -8,25 +8,28 @@ export const PokemonImage = styled.img`
   background: grey;
 `;
 
-export const InfoContainer = styled.div`
-  height: 28.5vh;
-  width: 15.2vw;
-  border: solid 2px black;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: no-Wrap;
+  align-items: center;
 `;
 
 export const Card = styled.div`
   background: transparent;
   height: 60vh;
-  width: 60vw;
+  width: 61vw;
   display: flex;
   flex-wrap: wrap;
-  border: solid 3px white;
+  justify-content: center;
+  border: solid 2px white;
 `;
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+export const InfoContainer = styled.div`
+  height: 28.5vh;
+  width: 15.2vw;
+  border: solid 2px black;
+  background-color: white;
 `;
 
 export const Bar = styled.div`

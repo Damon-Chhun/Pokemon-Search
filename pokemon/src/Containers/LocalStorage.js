@@ -1,6 +1,5 @@
 export function loadFromLocalStorage() {
   try {
-    localStorage.removeItem("store");
     const checkingState = localStorage.getItem("store");
     if (checkingState === null) {
       return undefined;
