@@ -2,7 +2,8 @@ import { GET_POKEMONS } from "../action";
 
 const initialState = {
   pokemons: [],
-  pokemonLoadedAt: null
+  pokemonLoadedAt: 0,
+  needsFetching: null
 };
 
 export default function(state = initialState, action) {
@@ -10,8 +11,14 @@ export default function(state = initialState, action) {
   switch (type) {
     case GET_POKEMONS:
       return {
-        pokemons: data,
-        pokemonLoadedAt: new Date()
+        pokemons: state.pokemons.concat(data),
+        pokemonLoadedAt: new Date(),
+        needsFetching: true
+      };
+    case "ReceivedData":
+      return {
+        ...state,
+        needsFetching: false
       };
 
     default:

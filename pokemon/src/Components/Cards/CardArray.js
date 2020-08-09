@@ -5,12 +5,7 @@ import Spinner from "../Spinner";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {
-  fetchPokemons,
-  setPokemonInfo,
-  fetchingData,
-  receivedData
-} from "../action";
+import { fetchPokemons, setPokemonInfo, receivedData } from "../action";
 
 const PokemonGrid = styled.div`
   background: transparent;
@@ -25,30 +20,32 @@ class CardArray extends Component {
   async componentDidMount() {
     const oneHour = 60 * 60 * 1000;
     if (
-      !this.props.LoadingData ||
+      this.props.needsFetching === null ||
       new Date() - this.props.pokemonsLoadedAt > oneHour
     ) {
-      await this.props.fetchingData();
+      console.log("FETCHING DATA CARDARRAY!!!!!!");
       await this.props.fetchPokemons(this.props.offset);
+
+      const defs = this.props.pokemons.reduce((accumulator, { url }) => {
+        const def = new Promise(async (resolve, reject) => {
+          try {
+            const response = await fetch(url);
+            const results = await response.json();
+
+            resolve(results);
+          } catch (e) {
+            reject(e);
+          }
+        });
+
+        accumulator.push(def);
+        return accumulator;
+      }, []);
+      const pokemonData = await Promise.all(defs);
+      await this.props.setPokemonInfo(pokemonData);
+      await this.props.receivedData();
+      console.log("RECEIVED DATA CARDARRAY!!!!!!");
     }
-    const defs = this.props.pokemons.reduce((accumulator, { url }) => {
-      const def = new Promise(async (resolve, reject) => {
-        try {
-          const response = await fetch(url);
-          const results = await response.json();
-
-          resolve(results);
-        } catch (e) {
-          reject(e);
-        }
-      });
-
-      accumulator.push(def);
-      return accumulator;
-    }, []);
-    const pokemonData = await Promise.all(defs);
-    await this.props.setPokemonInfo(pokemonData);
-    await this.props.receivedData();
   }
 
   componentDidUpdate(prevProps) {
@@ -79,13 +76,14 @@ class CardArray extends Component {
 
   render() {
     const { pokemonInfo = [] } = this.props;
-    if (this.props.LoadingData === true) {
+    if (this.props.needsFetching === true) {
       return <Spinner />;
     } else {
       return (
         <PokemonGrid>
-          {this.updateFilteredPokemon(this.props.searchfield).map(
-            (pokemons, index) => {
+          {this.updateFilteredPokemon(this.props.searchfield)
+            .slice(this.props.offset, this.props.offset + 20)
+            .map((pokemons, index) => {
               const found = pokemonInfo.find(
                 ({ name }) => name === pokemons.name
               );
@@ -108,8 +106,7 @@ class CardArray extends Component {
                   />
                 </div>
               );
-            }
-          )}
+            })}
         </PokemonGrid>
       );
     }
@@ -121,7 +118,7 @@ const mapStateToProps = state => ({
   pokemons: state.card.pokemons,
   pokemonInfo: state.pokemonInfo.pokemonInfo,
   pokemonInfoLoaded: state.pokemonInfoLoaded,
-  LoadingData: state.pagination.fetchingData,
+  needsFetching: state.card.needsFetching,
   pokemonsLoadedAt: state.card.pokemonsLoadedAt
 });
 
@@ -130,7 +127,7 @@ const mapDispatchToProps = dispatch =>
     {
       fetchPokemons,
       setPokemonInfo,
-      fetchingData,
+
       receivedData
     },
 

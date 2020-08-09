@@ -18,7 +18,8 @@ const DetailCard = ({
   height,
   weight,
   types,
-  index
+  index,
+  name
 }) => (
   <Container>
     <Card>
@@ -112,10 +113,11 @@ const DetailCard = ({
         </RowContainer>
       </StatContainer>
       <InfoContainer>
-        <h3>#{index}</h3>
-        <h3>Height: {height}</h3>
-        <h3>Weight: {weight}</h3>
-      </InfoContainer>
+        <h3>#:{index}</h3>
+
+        {/* <h3>Weight: {weight}</h3> */}
+      </InfoContainer>{" "}
+      */}
     </Card>
   </Container>
 );

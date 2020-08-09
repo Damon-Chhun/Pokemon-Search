@@ -9,7 +9,6 @@ import {
   prevPage,
   fetchPokemons,
   setPokemonInfo,
-  fetchingData,
   receivedData
 } from "../action";
 
@@ -26,26 +25,29 @@ class Pagination extends Component {
     });
     console.log(names2, "NAMES!");
 
-    const checkingNames = names1.some(names => names2.includes(names));
+    const checkingNames = names1
+      .slice(-20)
+      .some(names => names2.includes(names));
     console.log(checkingNames, "CHECKING NAMES");
 
     if (checkingNames !== true) {
-      this.props.fetchingData();
-      const defs = this.props.pokemons.reduce((accumulator, { url }) => {
-        const def = new Promise(async (resolve, reject) => {
-          try {
-            const response = await fetch(url);
-            const results = await response.json();
+      const defs = this.props.pokemons
+        .slice(-20)
+        .reduce((accumulator, { url }) => {
+          const def = new Promise(async (resolve, reject) => {
+            try {
+              const response = await fetch(url);
+              const results = await response.json();
 
-            resolve(results);
-          } catch (e) {
-            reject(e);
-          }
-        });
+              resolve(results);
+            } catch (e) {
+              reject(e);
+            }
+          });
 
-        accumulator.push(def);
-        return accumulator;
-      }, []);
+          accumulator.push(def);
+          return accumulator;
+        }, []);
       const pokemonData = await Promise.all(defs);
       await this.props.setPokemonInfo(pokemonData);
       this.props.receivedData();
@@ -71,11 +73,10 @@ class Pagination extends Component {
     const { offset: currOffset } = this.props;
     if (prevOffset < currOffset) {
       await this.props.fetchPokemons(this.props.offset);
-
       console.log(this.props.pokemons, "FETCH POKEMONS!!!!!");
       await this.nextRequest();
     } else if (prevOffset > currOffset) {
-      return this.props.fetchPokemons(this.props.offset);
+      await this.nextRequest();
     }
   }
 
@@ -117,7 +118,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       prevPage,
       fetchPokemons,
       setPokemonInfo,
-      fetchingData,
+
       receivedData
     },
     dispatch

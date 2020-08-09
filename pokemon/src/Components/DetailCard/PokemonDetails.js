@@ -10,23 +10,16 @@ class PokemonDetails extends Component {
     this.props.gatherStats(this.props.pokemonInfo, this.props.match.params.id);
   }
 
-  componentWillUnmount() {}
-
   render() {
-    const types = this.props.pokemonInfo[
-      this.props.match.params.id - 1
-    ].types.map(types => {
-      return types.type.name;
-    });
     return (
       <DetailCard
         pokemonNumber={this.props.match.params.id}
         stats={this.props.stats}
         statNames={this.props.statProps}
-        height={this.props.pokemonInfo[this.props.match.params.id - 1].height}
-        weight={this.props.pokemonInfo[this.props.match.params.id - 1].weight}
-        types={types}
+        height={this.props.pokemonInfo[this.props.match.params.id + 19]}
+        weight={this.props.pokemonInfo[this.props.match.params.id + 19]}
         index={this.props.match.params.id}
+        name={this.props.pokemonInfo[this.props.match.params.id + 19]}
       />
     );
   }
@@ -35,7 +28,8 @@ class PokemonDetails extends Component {
 const mapStateToProps = state => ({
   pokemonInfo: state.pokemonInfo.pokemonInfo,
   stats: state.pokemonInfo.stats,
-  statProps: state.pokemonInfo.statsNames
+  statProps: state.pokemonInfo.statsNames,
+  name: state.card.pokemons
 });
 
 const mapDispatchToProps = dispatch =>

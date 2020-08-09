@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { fetchingData, receivedData } from "./action";
+import { receivedData } from "./action";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 class Spinner extends Component {
   render() {
-    if (this.props.LoadingData === true) {
+    if (this.props.needsFetching === true) {
       return <div class="loader">Loading...</div>;
     } else {
       return null;
@@ -14,14 +14,12 @@ class Spinner extends Component {
 }
 
 const mapStateToProps = state => ({
-  LoadingData: state.pagination.fetchingData,
-  ReceivedData: state.pagination.receivedData
+  needsFetching: state.card.needsFetching
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      fetchingData,
       receivedData
     },
 

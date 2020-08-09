@@ -3,7 +3,10 @@ import { SET_POKEMONINFO } from "../action";
 const initialState = {
   pokemonInfo: [],
   stats: [],
-  statsNames: ["HP", "Attack", "Defense", "Sp.Atk", "Sp.Def", "Speed", "Total"]
+  statsNames: ["HP", "Attack", "Defense", "Sp.Atk", "Sp.Def", "Speed", "Total"],
+  weight: null,
+  height: null,
+  name: null
 };
 
 export default function(state = initialState, action) {

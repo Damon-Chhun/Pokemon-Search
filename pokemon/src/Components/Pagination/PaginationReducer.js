@@ -1,9 +1,7 @@
 import { GET_OFFSET } from "../action";
 
 const initialState = {
-  value: 0,
-  fetchingData: false,
-  receivedData: true
+  value: 0
 };
 
 export default function(state = initialState, action) {
@@ -13,20 +11,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         value: data
-      };
-
-    case "fetchingData":
-      return {
-        ...state,
-        fetchingData: true,
-        receivedData: false
-      };
-
-    case "ReceivedData":
-      return {
-        ...state,
-        fetchingData: false,
-        receivedData: true
       };
 
     default:
