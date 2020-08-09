@@ -22,17 +22,18 @@ export const fetchPokemons = offset => async dispatch => {
     const LIMIT_URL = "&limit=20";
     const response = await fetch(`${API_URL}${offset}${LIMIT_URL}`);
     const { results = [] } = await response.json();
+    console.log("POKEMONS FETCH IN ACTIONS", results);
     return dispatch({
       type: "GET_POKEMONS",
       data: results
     });
   } catch (e) {
-    console.log(e);
+    console.log(e, "FAILED TO FETCH POKEMONS IN ACTION");
   }
 };
 
 export const setPokemonInfo = data => dispatch => {
-  console.log(data);
+  console.log(data, "SET POKEMON INFO ACTION CHECK");
   return dispatch({
     type: SET_POKEMONINFO,
     data: data

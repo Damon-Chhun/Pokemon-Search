@@ -1,6 +1,7 @@
 export function loadFromLocalStorage() {
   try {
-    const checkingState = sessionStorage.getItem("store");
+    localStorage.removeItem("store");
+    const checkingState = localStorage.getItem("store");
     if (checkingState === null) {
       return undefined;
     }
@@ -14,6 +15,6 @@ export function loadFromLocalStorage() {
 export function saveToLocalStorage(store) {
   try {
     const checkingState = JSON.stringify(store);
-    sessionStorage.setItem("store", checkingState);
+    localStorage.setItem("store", checkingState);
   } catch (err) {}
 }

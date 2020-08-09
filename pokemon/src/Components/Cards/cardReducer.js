@@ -2,6 +2,7 @@ import { GET_POKEMONS } from "../action";
 
 const initialState = {
   pokemons: [],
+  tempPokemon: [],
   pokemonLoadedAt: 0,
   needsFetching: null
 };
@@ -11,6 +12,7 @@ export default function(state = initialState, action) {
   switch (type) {
     case GET_POKEMONS:
       return {
+        ...state,
         pokemons: state.pokemons.concat(data),
         pokemonLoadedAt: new Date(),
         needsFetching: true

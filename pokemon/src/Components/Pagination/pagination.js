@@ -15,44 +15,44 @@ import {
 class Pagination extends Component {
   async nextRequest() {
     const { pokemons, pokemonInfo } = this.props;
-
-    const names1 = pokemons.map(pokemons => {
+    const pokemonsState = pokemons.map(pokemons => {
       return pokemons.name;
     });
-    console.log(names1, "NAMES!");
-    const names2 = pokemonInfo.map(pokemons => {
+    console.log(pokemonsState, "pokemons state");
+
+    const pokemonsInfoState = pokemonInfo.map(pokemons => {
       return pokemons.name;
     });
-    console.log(names2, "NAMES!");
 
-    const checkingNames = names1
-      .slice(-20)
-      .some(names => names2.includes(names));
-    console.log(checkingNames, "CHECKING NAMES");
+    const checkingNames = await pokemonsInfoState.some(names =>
+      pokemonsInfoState.includes(pokemonsState.slice(-20))
+    );
+    console.log(checkingNames, "Comparing pokemons and pokemonsInfo State");
 
     if (checkingNames !== true) {
-      const defs = this.props.pokemons
-        .slice(-20)
-        .reduce((accumulator, { url }) => {
-          const def = new Promise(async (resolve, reject) => {
-            try {
-              const response = await fetch(url);
-              const results = await response.json();
+      console.log(pokemons, "CHECKING LAST TWENTY POKEMON OF STATE", pokemons);
+      const defs = pokemons.slice(-20).reduce((accumulator, { url }) => {
+        const def = new Promise(async (resolve, reject) => {
+          try {
+            const response = await fetch(url);
+            const results = await response.json();
 
-              resolve(results);
-            } catch (e) {
-              reject(e);
-            }
-          });
+            resolve(results);
+          } catch (e) {
+            reject(e);
+          }
+        });
 
-          accumulator.push(def);
-          return accumulator;
-        }, []);
+        accumulator.push(def);
+        return accumulator;
+      }, []);
       const pokemonData = await Promise.all(defs);
       await this.props.setPokemonInfo(pokemonData);
       this.props.receivedData();
     } else {
-      console.log("ERROR WHEN SETTING POKEMON");
+      console.log(
+        "state.card.pokemons DOES EQUAL state.pokemonInfo.pokemonInfo"
+      );
     }
   }
 
@@ -72,11 +72,14 @@ class Pagination extends Component {
     const { offset: prevOffset } = prevProps;
     const { offset: currOffset } = this.props;
     if (prevOffset < currOffset) {
-      await this.props.fetchPokemons(this.props.offset);
-      console.log(this.props.pokemons, "FETCH POKEMONS!!!!!");
-      await this.nextRequest();
+      console.log("ComponentDidUpdate Pagination.js Line 87");
+      console.log("OFFSET", this.props.offset);
+      if (this.props.pokemons.length < this.props.offset + 20) {
+        console.log("FETCHING POKEMON IN PAGINATION");
+        await this.props.fetchPokemons(this.props.offset);
+        await this.nextRequest();
+      }
     } else if (prevOffset > currOffset) {
-      await this.nextRequest();
     }
   }
 
@@ -105,7 +108,8 @@ const mapStateToProps = state => {
   return {
     offset: state.pagination.value,
     pokemons: state.card.pokemons,
-    pokemonInfo: state.pokemonInfo.pokemonInfo
+    pokemonInfo: state.pokemonInfo.pokemonInfo,
+    tempPokemons: state.card.tempPokemon
   };
 };
 
@@ -118,7 +122,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       prevPage,
       fetchPokemons,
       setPokemonInfo,
-
       receivedData
     },
     dispatch
