@@ -21,6 +21,7 @@ class CardArray extends Component {
     const oneHour = 60 * 60 * 1000;
     if (
       this.props.needsFetching === null ||
+      this.props.needsFetching === true ||
       new Date() - this.props.pokemonsLoadedAt > oneHour
     ) {
       console.log("FETCHING DATA CARDARRAY!!!!!!");
