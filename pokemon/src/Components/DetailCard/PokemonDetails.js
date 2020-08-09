@@ -17,9 +17,9 @@ class PokemonDetails extends Component {
         stats={this.props.stats}
         statNames={this.props.statProps}
         height={this.props.pokemonInfo[this.props.match.params.id + 19]}
-        weight={this.props.pokemonInfo[this.props.match.params.id + 19]}
+        weight={this.props.pokemonInfo[this.props.match.params.id - 1]}
         index={this.props.match.params.id}
-        name={this.props.pokemonInfo[this.props.match.params.id + 19]}
+        name={this.props.pokemonInfo[this.props.match.params.id - 1]}
       />
     );
   }

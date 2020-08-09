@@ -2,10 +2,41 @@ import styled from "styled-components";
 
 export const PokemonImage = styled.img`
   margin: 0;
-  height: 30vh;
-  width: 15vw;
-  border: solid 5px black;
-  background: grey;
+  height: 28vh;
+  width: 15.1vw;
+  border: solid 3px black;
+  background: rgb(240, 235, 241);
+  margin: 0.25vh;
+`;
+
+export const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 31vh;
+
+  background-color: rgb(205, 170, 238);
+`;
+
+export const ImageHeader = styled.div`
+  height: 5vh;
+
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const ImageHeaderH3 = styled.h3`
+  color: white;
+  font-size: 1.8vh;
+  margin: 0;
+`;
+export const PokeBall = styled.img`
+  width: 2.5vw;
+  height: 4vh;
+  background: transparent;
 `;
 
 export const Container = styled.div`
@@ -18,18 +49,23 @@ export const Container = styled.div`
 export const Card = styled.div`
   background: transparent;
   height: 60vh;
-  width: 61vw;
+  width: 60.2vw;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  border: solid 2px white;
+
+  border: solid 3px black;
 `;
 
 export const InfoContainer = styled.div`
   height: 28.5vh;
-  width: 15.2vw;
+  width: 15.4vw;
   border: solid 2px black;
-  background-color: white;
+  background-color: rgb(252, 224, 106);
+`;
+export const Characteristics = styled.div`
+  background-color: rgb(252, 224, 106);
+  width: 44.6vw;
+  border: solid 1px black;
 `;
 
 export const Bar = styled.div`
@@ -56,18 +92,23 @@ export const OuterBarContainer = styled.div`
 `;
 
 export const StatContainer = styled.div`
-  width: 43.95vw;
+  width: auto;
   height: 30vh;
   margin: 0;
   border: solid 4px orange;
 `;
 
 export const RowContainer = styled.div`
-  width: 100;
+  width: 44vw;
   display: flex;
   flex-direction: row;
   flex-wrap: no-wrap;
   justify-content: start;
   align-items: center;
   border: solid 2px black;
+`;
+
+export const CardRowContainer = styled.div`
+  display: flex;
+  flex-wrap: no-wrap;
 `;
