@@ -132,7 +132,11 @@ export const Ability = styled.h3`
   background-color: white;
   border-radius: 16px;
   font-size: medium;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
   width: 28vw;
   height: 8vh;
 `;

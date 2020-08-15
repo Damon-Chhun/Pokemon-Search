@@ -114,7 +114,7 @@ export const getAbility = (info, index) => async dispatch => {
       const finalArray = tempArray.filter(
         element => element.language.name === "en"
       );
-      return finalArray[0].effect;
+      return finalArray[0].short_effect;
     });
     console.log(abilityDescriptions, "ability Descriptions check");
 
