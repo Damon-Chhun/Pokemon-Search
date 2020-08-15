@@ -15,18 +15,23 @@ import {
   ImageHeader,
   ImageHeaderH3,
   PokeBall,
-  Characteristics
+  Characteristics,
+  Ability,
+  AbilityName,
+  AbilityRow
 } from "./StyledComponents";
 
 const DetailCard = ({
   stats,
   pokemonNumber,
   statNames,
-  height,
   weight,
-  types,
   index,
-  name
+  name,
+  height,
+  types,
+  testing,
+  ability
 }) => (
   <Container>
     <Card>
@@ -132,9 +137,20 @@ const DetailCard = ({
       <CardRowContainer>
         <InfoContainer>
           <h3>Weight: {weight.weight}</h3>
+          <h3>Height: {height.height}</h3>
+          <h3>
+            Type: {types[0]} {types[1]}
+          </h3>
         </InfoContainer>
         <Characteristics>
-          <h1>testing</h1>
+          <AbilityRow>
+            <AbilityName>{testing[0]}</AbilityName>
+            <Ability>{ability[0]}</Ability>
+          </AbilityRow>
+          <AbilityRow>
+            <AbilityName>{testing[1]}</AbilityName>
+            <Ability>{ability[1]}</Ability>
+          </AbilityRow>
         </Characteristics>
       </CardRowContainer>
     </Card>

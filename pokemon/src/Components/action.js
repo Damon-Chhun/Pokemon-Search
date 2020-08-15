@@ -64,3 +64,65 @@ export const gatherStats = (pokemonInfo, match) => async dispatch => {
     console.log(e);
   }
 };
+
+export const abilityName = (info, index) => async dispatch => {
+  console.log("props for abilityName Action", index, info);
+  try {
+    const abilityObject = info[index - 1].abilities;
+    const abilityNames = abilityObject.map((element, index) => {
+      return element.ability.name;
+    });
+    console.log("ABILITY NAME CHECK", abilityNames);
+    return dispatch({
+      type: "GET_ABILITY_NAME",
+      data: abilityNames
+    });
+  } catch (e) {
+    console.log("error in getting abilityName Action");
+  }
+};
+
+export const getAbility = (info, index) => async dispatch => {
+  try {
+    console.log("Passed in props check in Action abilityName", info, index);
+    const abilityObject = info[index - 1].abilities;
+    const urls = abilityObject.map(element => {
+      return element.ability.url;
+    });
+
+    const responseMap = await urls.reduce((accumulator, urls) => {
+      console.log("CHECKING URLS", urls);
+      const def = new Promise(async (resolve, reject) => {
+        try {
+          const response = await fetch(urls);
+          const results = await response.json();
+
+          resolve(results);
+        } catch (e) {
+          console.log("FAILED");
+          reject(e);
+        }
+      });
+      accumulator.push(def);
+      return accumulator;
+    }, []);
+
+    const descriptions = await Promise.all(responseMap);
+    console.log(descriptions, "ABILITY DESCRIPTIONS");
+    const abilityDescriptions = descriptions.map((object, index) => {
+      const tempArray = object.effect_entries;
+      const finalArray = tempArray.filter(
+        element => element.language.name === "en"
+      );
+      return finalArray[0].effect;
+    });
+    console.log(abilityDescriptions, "ability Descriptions check");
+
+    return dispatch({
+      type: "GET_ABILITY",
+      data: abilityDescriptions
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};

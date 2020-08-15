@@ -4,9 +4,8 @@ const initialState = {
   pokemonInfo: [],
   stats: [],
   statsNames: ["HP", "Attack", "Defense", "Sp.Atk", "Sp.Def", "Speed", "Total"],
-  weight: null,
-  height: null,
-  name: null
+  abilityName: [],
+  ability: []
 };
 
 export default function(state = initialState, action) {
@@ -21,6 +20,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         stats: data
+      };
+    case "GET_ABILITY":
+      return {
+        ...state,
+        ability: data
+      };
+    case "GET_ABILITY_NAME":
+      return {
+        ...state,
+        abilityName: data
       };
 
     default:

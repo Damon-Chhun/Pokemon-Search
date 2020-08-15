@@ -32,6 +32,7 @@ export const ImageHeaderH3 = styled.h3`
   color: white;
   font-size: 1.8vh;
   margin: 0;
+  text-transform: capitalize;
 `;
 export const PokeBall = styled.img`
   width: 2.5vw;
@@ -65,7 +66,11 @@ export const InfoContainer = styled.div`
 export const Characteristics = styled.div`
   background-color: rgb(252, 224, 106);
   width: 44.6vw;
-  border: solid 1px black;
+  height: 28.5vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: solid 4px purple;
 `;
 
 export const Bar = styled.div`
@@ -111,4 +116,35 @@ export const RowContainer = styled.div`
 export const CardRowContainer = styled.div`
   display: flex;
   flex-wrap: no-wrap;
+`;
+
+export const AbilityName = styled.h1`
+  border: solid 2px grey;
+  font-size: 1.5vw;
+  color: white;
+  background-color: grey;
+  text-align: start;
+  border-radius: 16px;
+`;
+
+export const Ability = styled.h3`
+  color: black;
+  background-color: white;
+  border-radius: 16px;
+  font-size: medium;
+  text-align: center;
+  width: 28vw;
+  height: 8vh;
+`;
+
+export const AbilityRow = styled.div`
+  width: 42vw;
+
+  height: 10vh;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  align-items: center;
+  justify-content: space-between;
 `;
