@@ -74,7 +74,6 @@ export const Characteristics = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border: solid 4px purple;
 `;
 
 export const Bar = styled.div`
@@ -86,7 +85,7 @@ export const Bar = styled.div`
 `;
 
 export const StatName = styled.h3`
-  font-size: 1.5vh;
+  font-size: 1.25vh;
   text-align: start;
   position: relative;
 `;
@@ -123,33 +122,35 @@ export const CardRowContainer = styled.div`
 `;
 
 export const AbilityName = styled.h1`
-  border: solid 2px grey;
+  border: solid 2px black;
   font-size: 1.5vw;
   color: white;
   background-color: grey;
   text-align: start;
   border-radius: 16px;
+  padding: 0.5vh;
 `;
 
 export const Ability = styled.h3`
   color: black;
   background-color: white;
   border-radius: 16px;
-  font-size: medium;
+  font-size: 1.5vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
+  border: solid 2px black;
   width: 28vw;
   height: 8vh;
+  text-align: center;
 `;
 
 export const AbilityRow = styled.div`
   width: 42vw;
 
   height: 10vh;
-  margin: 0;
+  padding: 1vw;
   display: flex;
   flex-direction: row;
   flex-wrap: no-wrap;
@@ -161,16 +162,17 @@ export const InfoName = styled.h1`
   border-radius: 16px;
   color: white;
   background-color: grey;
-  font-size: medium;
+  font-size: 2vh;
   text-align: center;
   border: solid 1px black;
   margin-bottom: 0;
+  margin-top: 1vh;
 `;
 
 export const Info = styled.h3`
   border-radius: 16px;
   background-color: white;
-  font-size: small;
+  font-size: 2vh;
   text-transform: capitalize;
   text-align: center;
   border: solid 1px black;

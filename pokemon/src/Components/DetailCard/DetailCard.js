@@ -20,8 +20,7 @@ import {
   AbilityName,
   AbilityRow,
   Info,
-  InfoName,
-  InfoRow
+  InfoName
 } from "./StyledComponents";
 
 const DetailCard = ({
