@@ -18,7 +18,10 @@ import {
   Characteristics,
   Ability,
   AbilityName,
-  AbilityRow
+  AbilityRow,
+  Info,
+  InfoName,
+  InfoRow
 } from "./StyledComponents";
 
 const DetailCard = ({
@@ -136,11 +139,16 @@ const DetailCard = ({
       </CardRowContainer>
       <CardRowContainer>
         <InfoContainer>
-          <h3>Weight: {weight.weight}</h3>
-          <h3>Height: {height.height}</h3>
-          <h3>
-            Type: {types[0]} {types[1]}
-          </h3>
+          <InfoName>Weight: </InfoName>
+          <Info>{weight.weight}</Info>
+
+          <InfoName>Height: </InfoName>
+          <Info>{height.height}</Info>
+
+          <InfoName>Types: </InfoName>
+          <Info>
+            {types[0]} {types[1]}
+          </Info>
         </InfoContainer>
         <Characteristics>
           <AbilityRow>

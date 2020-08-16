@@ -62,6 +62,10 @@ export const InfoContainer = styled.div`
   width: 15.4vw;
   border: solid 2px black;
   background-color: rgb(252, 224, 106);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: no-wrap;
+  align-items: space-around;
 `;
 export const Characteristics = styled.div`
   background-color: rgb(252, 224, 106);
@@ -151,4 +155,24 @@ export const AbilityRow = styled.div`
   flex-wrap: no-wrap;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const InfoName = styled.h1`
+  border-radius: 16px;
+  color: white;
+  background-color: grey;
+  font-size: medium;
+  text-align: center;
+  border: solid 1px black;
+  margin-bottom: 0;
+`;
+
+export const Info = styled.h3`
+  border-radius: 16px;
+  background-color: white;
+  font-size: small;
+  text-transform: capitalize;
+  text-align: center;
+  border: solid 1px black;
+  margin-top: 0;
 `;
