@@ -79,7 +79,7 @@ class CardArray extends Component {
 
   render() {
     const { pokemonInfo = [] } = this.props;
-    if (this.props.needsFetching === true) {
+    if (this.props.needsFetching !== false) {
       return <Spinner />;
     } else {
       return (

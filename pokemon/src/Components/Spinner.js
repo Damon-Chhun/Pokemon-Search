@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 
 class Spinner extends Component {
   render() {
-    if (this.props.needsFetching === true) {
+    if (this.props.needsFetching !== false) {
       return <div class="loader">Loading...</div>;
     } else {
       return null;

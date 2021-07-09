@@ -4,6 +4,7 @@ export function loadFromLocalStorage() {
     if (checkingState === null) {
       return undefined;
     }
+    console.log(checkingState);
     return JSON.parse(checkingState);
   } catch (err) {
     console.log(err);
